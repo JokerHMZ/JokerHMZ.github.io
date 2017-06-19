@@ -505,8 +505,10 @@ function drawGameOver(){
 
 /**游戏的主定时器**/
 var timer = setInterval(function(){
-  sky.draw();  //绘制背景图，同时清空画布上的当前所有内容
-  sky.move();
+  if(sky!==null){
+    sky.draw();  //绘制背景图，同时清空画布上的当前所有内容
+    sky.move();
+  }
   switch(curPhase){
     case PHASE_READY:
       ctx.drawImage(logo, (WIDTH-logo.width)/2, (HEIGHT-logo.height)/2);
