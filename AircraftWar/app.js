@@ -2,12 +2,12 @@
 var WIDTH = window.innerWidth;    //手机中应该是屏幕的宽
 var HEIGHT = window.innerHeight;   //手机中应该是屏幕的高
 
-var bulletSpeed = 10;  //我方子弹的移动速度
+var bulletSpeed = 20;  //我方子弹的移动速度
 var bulletRate = 5; //每62*5ms发射一次子弹，此参数最极限值为1
 var enemy1Speed = 6;  //第一种敌机每62ms移动的距离
 var enemy2Speed = 4;  //第二种敌机每62ms移动的距离
 var enemy3Speed = 2;  //第三种敌机每62ms移动的距离
-var difficulty = 150; //游戏难度，取值范围10~500之间，数值越大，生成的敌机数量就越少
+var difficulty = 200; //游戏难度，取值范围10~500之间，数值越大，生成的敌机数量就越少
 var heroLife = 3;     //英雄的默认命数
 
 var canvas = document.getElementById('canvas');
@@ -264,7 +264,7 @@ enemy3Imgs[7].src = "img/enemy3_down6.png";
 function Enemy1(imgs){
   this.life = 1;         //1条命，被撞击一次即坠毁
   this.crashed = false;  //是否开始坠毁
-  this.index = 0
+  this.index = 0;
   this.width = 57;
   this.height = 51;
   this.x = Math.random()*(WIDTH-this.width);
@@ -306,7 +306,7 @@ function Enemy1(imgs){
   }
 }
 function Enemy2(imgs){
-  this.life = 5;         //5条命，被撞击五次即坠毁
+  this.life = 3;         //5条命，被撞击五次即坠毁
   this.crashed = false;  //是否开始坠毁
   this.index = 0
   this.width = 69;
@@ -350,9 +350,9 @@ function Enemy2(imgs){
   }
 }
 function Enemy3(imgs){
-  this.life = 15;        //15条命，被撞击十五次即坠毁
+  this.life = 10;        //15条命，被撞击十五次即坠毁
   this.crashed = false;  //是否开始坠毁
-  this.index = 0
+  this.index = 0;
   this.width = 169;
   this.height = 258;
   this.x = Math.random()*(WIDTH-this.width);
@@ -381,7 +381,7 @@ function Enemy3(imgs){
         this.index++;
       }
     }
-  }
+  };
   //碰撞检验
   this.hit = function(target){ //target表撞击目标，如我方子弹、我方飞机
     if((this.x+this.width>=target.x)
