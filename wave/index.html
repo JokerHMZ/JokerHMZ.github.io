@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w/640;
+            document.getElementById('viewport').content = 'width=640,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+    </script>
+    <title>demo</title>
+    <style>
+        body,html{
+            width:100%;
+            height:100%;
+            padding:0;
+            margin:0;
+            overflow:hidden;
+        }
+        #holder{
+            width:100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="holder"></div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/waterWave.js"></script>
+<script>
+    document.addEventListener('touchend', function (e) {e.preventDefault();}, false);//避免 iPhone 双击屏幕上移
+    document.addEventListener('touchmove', function (e) {e.preventDefault();}, false);
+    var main = (function(window, $){
+        var settings = {
+            image: 'images/bg.jpg', //背景图片
+            rippleRadius: 3, //radius of the ripple
+            width: 640, //width
+            height: parseInt($("#holder").css("height")), //height
+            delay: 1, //if auto param === true. 1 === 1 second delay for animation
+            auto: false//if auto param === true, animation starts on it′s own
+        };
+        return {
+            init:function (){
+                $('#holder').waterRippleEffect(settings);
+                $("#holder").on("touchstart",function(e){
+                    var mouseY = e.originalEvent.targetTouches[0].pageY;
+                    var mouseX = e.originalEvent.targetTouches[0].pageX;
+                    $('#holder').waterRippleEffect("disturb", mouseX, mouseY);
+                });
+                $("#holder").on("touchmove",function(e){
+                    var mouseY = e.originalEvent.targetTouches[0].pageY;
+                    var mouseX = e.originalEvent.targetTouches[0].pageX;
+                    $('#holder').waterRippleEffect("disturb", mouseX, mouseY);
+                });
+            }
+        }
+
+    })(window, jQuery);
+
+    main.init();
+</script>
+
+</body>
+</html>
