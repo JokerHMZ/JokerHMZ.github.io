@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w/640;
+            document.getElementById('viewport').content = 'width=640,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+    </script>
+    <title>噪点效果</title>
+    <script src="js/three.js"></script>
+
+    <script src="js/ShaderPass.js"></script>
+    <script src="js/CopyShader.js"></script>
+    <script src="js/EffectComposer.js"></script>
+    <script src="js/MaskPass.js"></script>
+    <script src="js/RenderPass.js"></script>
+
+    <script src="js/FilmPass.js"></script>
+    <script src="js/FilmShader.js"></script>
+    <script src="js/GlitchPass.js"></script>
+    <script src="js/DigitalGlitch.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cas"></canvas>
+<script>
+    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+    window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame;
+    window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+    var main=(function (){
+        var cas = document.getElementById('cas');
+        cas.width = innerWidth;
+        cas.height = innerHeight;
+
+        var cameraMar = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000),
+              camera = new THREE.OrthographicCamera(-window.innerWidth , window.innerWidth , window.innerHeight,-window.innerHeight, -10000, 10000),
+
+              sceneMar = new THREE.Scene(),
+              sceneBG = new THREE.Scene(),
+
+              renderer=new THREE.WebGLRenderer({
+                  canvas: cas,
+                  antialias: true,
+                  precision: "highp",
+                  alpha:true,
+                  shadowMapEnabled:true
+              }),
+
+              clock = new THREE.Clock(),
+
+              ambient=new THREE.AmbientLight("#181818"),
+              directionLight = new THREE.DirectionalLight(0xffffff);
+
+        renderer.setClearColor("#000",1);
+
+        camera.position.set(0,0,800);
+        camera.lookAt(sceneBG.position);
+
+        cameraMar.position.set(300,400,800);
+        cameraMar.lookAt(sceneMar.position);
+
+        directionLight.position.set(550, 100, 550);
+        directionLight.intensity=0.6;
+
+
+        sceneMar.add(ambient);
+        sceneMar.add(directionLight);
+
+        var  bgPlane=createPlane(new THREE.PlaneGeometry(1,1));
+        bgPlane.position.z = -100;
+        bgPlane.scale.set(window.innerWidth*2, 2*window.innerHeight, 1);
+        sceneBG.add(bgPlane);
+
+        var mar=createMar(new THREE.SphereGeometry(300, 40, 40));
+        mar.position.set(-500,-400,-300);
+        sceneMar.add(mar);
+
+        var composer = new THREE.EffectComposer(renderer);
+        composer.renderTarget1.stencilBuffer = true;
+        composer.renderTarget2.stencilBuffer = true;
+
+         var bgPass = new THREE.RenderPass(sceneBG, camera),
+            renderPass = new THREE.RenderPass(sceneMar, cameraMar);
+//         bgPass.clear=false;
+         renderPass.clear=false;
+
+        var effectCopy = new THREE.ShaderPass(THREE.CopyShader);
+        effectCopy.renderToScreen = true;
+
+        var clearMask = new THREE.ClearMaskPass();
+
+        var marsMask = new THREE.MaskPass(sceneMar, cameraMar);
+        var bgMask = new THREE.MaskPass(sceneBG, camera);
+
+         var  effectGlitch = new THREE.GlitchPass(64);
+         var  effectFilm=new THREE.FilmPass(0.8,0,0,true);
+
+        composer.addPass(bgPass);
+        composer.addPass(renderPass);
+        composer.addPass(bgMask);
+        composer.addPass(effectFilm);
+        composer.addPass(clearMask);
+        composer.addPass(marsMask);
+         composer.addPass(effectGlitch);
+        composer.addPass(clearMask);
+        composer.addPass(effectCopy);
+
+        function loadTexture(url){
+            return THREE.ImageUtils.loadTexture(url);
+        }
+
+        function createPlane(geom){
+            var planetMaterial = new THREE.MeshBasicMaterial();
+            planetMaterial.map = loadTexture("img/bg.jpg");
+            planetMaterial.depthTest=false;
+            return new THREE.Mesh(geom, planetMaterial);
+        }
+
+        function createMar(geom){
+            var planetTexture = loadTexture("img/Mars_2k-050104.png");
+            var normalTexture = loadTexture("img/Mars-normalmap_2k.png");
+
+            var planetMaterial = new THREE.MeshPhongMaterial();
+            planetMaterial.normalMap = normalTexture;
+            planetMaterial.map = planetTexture;
+//            planetMaterial.shininess = 150;
+
+            var mesh = new THREE.Mesh(geom, planetMaterial);
+
+            return mesh;
+        }
+
+        function render(){
+            renderer.autoClear = false;
+            var delta = clock.getDelta();
+            mar.rotation.y+=0.002;
+            requestAnimationFrame( render );
+            composer.render(delta);
+        }
+        render();
+    })()
+</script>
+</body>
+</html>
