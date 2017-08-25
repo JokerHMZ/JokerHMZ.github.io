@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大拇指点赞</title>
+    <link rel="stylesheet" href="css/zan.css">
+    <style>
+        #container{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/system.js"></script>
+<script>
+        SystemJS.import('js/zan.js').then(function (){
+            $("#container").thumbLike(10);
+        })
+</script>
+</html>
