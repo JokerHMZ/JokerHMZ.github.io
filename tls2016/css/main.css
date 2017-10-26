@@ -1,0 +1,1735 @@
+/*自写框架*/
+*{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background:#021123 ;
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background:#021123 url("../img/loading_bg.png") no-repeat;
+    background-size: cover;
+}
+#main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.section{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background-size: cover;
+}
+.section>div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.slide_up{
+    top:-100%;
+    transition: top 0.5s ease-out;
+}
+.slide_down{
+    top:100%;
+    transition: top 0.5s ease-out;
+}
+.active{
+    top:0;
+    transition: top 0.5s ease-out;
+}
+.on_up{
+    top:-100%;
+}
+.on_down{
+    top:100%;
+}
+.z_high{
+    z-index: 10;
+}
+.z_low{
+    z-index: 1;
+}
+/*自写框架结束*/
+/*reset开始*/
+img{
+    border: none;
+}
+body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background:#021123 url("../img/loading_bg.png") no-repeat;
+    background-size: cover;
+}
+.hid{
+    display: none;
+}
+video{
+    width: 1px;
+    height: 1px;
+}
+ul,li,p{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/*箭头开始*/
+@-webkit-keyframes arrow_ani{
+     0%{
+         opacity:1;
+     }
+     100%{
+         opacity:0;
+     }
+ }
+@keyframes arrow_ani{
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+#arrow{
+    background: url("../img/slide.png") no-repeat top center;
+    background-size: cover;
+    position: fixed;
+    top:96%;
+    left:291px;
+    width: 60px;
+    height:3%;
+    z-index: 1000;
+    animation: arrow_ani 1s linear infinite alternate;
+    -webkit-animation: arrow_ani 1s linear infinite alternate;
+}
+/*箭头结束*/
+/*reset结束*/
+/*背景音开始*/
+#music{
+    position: absolute;
+    width: 66px;
+    height:66px;
+    right:19px;
+    top:2.5%;
+    z-index: 100000;
+}
+#music.hid{
+    display: none;
+}
+#jump_btn{
+    background: url("../img/jump_btn.png") no-repeat;
+    position: absolute;
+    width: 66px;
+    height:66px;
+    right:19px;
+    top:10%;
+    z-index: 10000;
+}
+#music.music_on{
+    background: url("../img/music_on.png") no-repeat;
+}
+#music.music_off{
+    background: url("../img/music_off.png") no-repeat;
+}
+@-webkit-keyframes music_rot{
+    0%{
+        -webkit-transform:rotate(0deg);
+    }
+    100%{
+        -webkit-transform:rotate(360deg);
+    }
+}
+@keyframes music_rot{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+.music_rotate{
+    animation: music_rot 5s linear infinite;
+    -webkit-animation: music_rot 5s linear infinite;
+}
+/*背景音结束*/
+/*loading开始*/
+#loading{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+#load_moon{
+    position: fixed;
+    left: 246px;
+    top: 35%;
+    width: 149px;
+    height: 149px;
+}
+#load_text{
+    display: inline-block;
+    position: fixed;
+    width: 80px;
+    left: 280px;
+    top:52%;
+    text-align: center;
+    font-size: 32px;
+    color: #d0cab0;
+}
+/*loading结束*/
+/*canvas(窗户+桌子)开始*/
+#cas{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top:11%;
+    z-index: 10;
+    text-align: center;
+}
+#cas_bar{
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom:0;
+    margin: auto;
+}
+#stage{
+    background: none;
+    position: relative;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+#blind_left{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    background-image: url("../img/window/bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 200;
+}
+#blind_right{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top:0;
+    background-image: url("../img/window/bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 200;
+}
+#blind_left.blind_left_move{
+    left:-51%;
+    transition: left 0.5s linear;
+    -webkit-transition: left 0.5s linear;
+}
+#blind_right.blind_right_move{
+    right:-51%;
+    transition: right 0.5s linear;
+    -webkit-transition: right 0.5s linear;
+}
+#stage .pic{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top:0;
+    left: -110%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+#sea{
+    z-index: 1;
+}
+#spring{
+    z-index: 10;
+}
+#snow{
+    z-index: 20;
+}
+#stage .pic>div{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+#stage p{
+    position: absolute;
+}
+#table{
+    position: absolute;
+    left: 0;
+    top:0
+}
+/*canvas(窗户+桌子)结束*/
+/*人开始*/
+#human{
+      width: 62%;
+      position: absolute;
+      top: 40%;
+      right: 10.9%;
+      z-index: 100;
+    height: 62%;
+  }
+#human p{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/*人结束*/
+/*字开始*/
+.text{
+    position: absolute;
+    width: 100%;
+    left:0;
+    z-index: 10;
+}
+.section3 .text{
+    top:48%;
+}
+.section2 .text{
+    top:57%;
+}
+.section1 .text{
+    top:52%;
+}
+.txt{
+    transform: translateY(40px);
+    -webkit-transform: translateY(40px);
+    opacity: 0;
+}
+div.txt{
+    display: inline-block;
+    position: relative;
+    width: 70px;
+    height:298px;
+}
+div.txt img{
+    position: absolute;
+    left: 0;
+    top:0;
+}
+#txt1 p{
+    width: 42px;
+    height: 316px;
+    float: left;
+}
+#txt1 p[data-i="1"]{
+    background: url("../img/window/font5.png") no-repeat;
+}
+#txt1 p[data-i="2"]{
+    background: url("../img/window/font4.png") no-repeat;
+}
+#txt1 p[data-i="3"]{
+    background: url("../img/window/font3.png") no-repeat;
+}
+#txt1 p[data-i="4"]{
+    background: url("../img/window/font2.png") no-repeat;
+}
+#txt1 p[data-i="5"]{
+    background: url("../img/window/font1.png") no-repeat;
+}
+#txt2 p{
+    width: 41px;
+    height: 375px;
+    float: left;
+}
+#txt2 p[data-i="1"]{
+    background: url("../img/table/font4.png") no-repeat;
+}
+#txt2 p[data-i="2"]{
+    background: url("../img/table/font3.png") no-repeat;
+}
+#txt2 p[data-i="3"]{
+    background: url("../img/table/font2.png") no-repeat;
+}
+#txt2 p[data-i="4"]{
+    background: url("../img/table/font1.png") no-repeat;
+}
+#txt1{
+    width: 33.3%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#txt2{
+    width: 26.2%;
+    margin: 0 auto;
+}
+#txt3{
+    width: 35%;
+    margin: 0 auto;
+}
+ .text .show1{
+    transform:translateY(0px);
+     -webkit-transform:translateY(0px);
+    opacity: 1;
+     -webkit-transition: all 0.5s linear 0.4s;
+     transition: all 0.5s linear 0.4s;
+}
+ .text .show2{
+    transform:translateY(0px);
+     -webkit-transform:translateY(0px);
+    opacity: 1;
+    transition: all 0.5s linear 0.3s;
+     -webkit-transition: all 0.5s linear 0.3s;
+}
+ .text .show3{
+    transform:translateY(0px);
+     -webkit-transform:translateY(0px);
+    opacity: 1;
+    transition: all 0.5s linear 0.2s;
+     -webkit-transition: all 0.5s linear 0.2s;
+}
+ .text .show4{
+    transform:translateY(0px);
+     -webkit-transform:translateY(0px);
+    opacity: 1;
+    transition: all 0.5s linear 0.1s;
+     -webkit-transition: all 0.5s linear 0.1s;
+}
+ .text .show5{
+    transform:translateY(0px);
+     -webkit-transform:translateY(0px);
+    opacity: 1;
+    transition: all 0.5s linear;
+     -webkit-transition: all 0.5s linear;
+}
+/*字结束*/
+/*窗户开始*/
+    /*海滩开始*/
+#main .section1_bg{
+    background-image:url("../img/window/bg.png");
+    background-size: cover;
+}
+#temporaryBg{
+    position: relative;
+    width: 100%;
+    height: 0;
+    background: url("../img/window/bg.png") no-repeat;
+    background-size: cover;
+    transition:height 1s ease-in;
+    -webkit-transition:height 1s ease-in;
+}
+#temporaryBg.pull_bg{
+    height:100%;
+}
+#temporaryBg_scroll{
+    position: absolute;
+    width: 100%;
+    bottom:-10%;
+}
+#sea>div{
+    background: url("../img/window/sea/sky.png") no-repeat center top;
+}
+#sea .sea1{
+    background: url("../img/window/sea/sea01.png") no-repeat center top;
+    width: 120%;
+    height: 18%;
+    left:120%;
+    bottom: 31%;
+    z-index:40;
+}
+#sea .sea2{
+    background: url("../img/window/sea/sea02.png") no-repeat center top;
+    width: 120%;
+    height: 18%;
+    left:120%;
+    bottom: 31%;
+    z-index: 30;
+}
+#sea .sea3{
+    background: url("../img/window/sea/sea03.png") no-repeat center top;
+    width: 120%;
+    height: 19%;
+    left:120%;
+    bottom:38.5%;
+    z-index: 20;
+}
+#sea .sea4{
+    background: url("../img/window/sea/sea04.png") no-repeat center top;
+    width: 120%;
+    height: 19%;
+    left:120%;
+    bottom: 36%;
+    z-index: 10;
+}
+#sea .sea5{
+    background: url("../img/window/sea/sea05.png") no-repeat center top;
+    width: 120%;
+    height: 19%;
+    left:120%;
+    bottom: 41%;
+    z-index: 1;
+}
+#sea .sand{
+    background: url("../img/window/sea/sand.png") no-repeat center top;
+    width: 100%;
+    height: 36%;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+}
+#sea .sand_top{
+    background: url("../img/window/sea/sand_top.png") no-repeat center top;
+    width: 100%;
+    height: 0;
+    left: 0;
+    bottom: 31%;
+    z-index: 50;
+}
+#sea .sand_show{
+    height: 8%;
+    transition: height 0.5s ease-in 0.2s;
+    -webkit-transition: height 0.5s ease-in 0.2s;
+}
+#sea .star1{
+    background: url("../img/window/sea/star1.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 17.8%;
+    height: 10.6%;
+    right: 25.8%;
+    top: -50%;
+    z-index: 60;
+}
+#sea .star2{
+    background: url("../img/window/sea/star2.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 9.8%;
+    height: 5.9%;
+    right: 24px;
+    top: -50%;
+    z-index: 60;
+}
+#sea .chair{
+    background: url("../img/window/sea/chair.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 43.6%;
+    height: 29.4%;
+    left: -10.5%;
+    top: -40%;
+    z-index: 60;
+}
+#sea .sun{
+    background: url("../img/window/sea/sun.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 43.8%;
+    height: 46.1%;
+    left:1.3%;
+    top:100%;
+    z-index: 5;
+}
+#sea .cloud1{
+    background: url("../img/window/sea/cloud01.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 23.5%;
+    height: 11.9%;
+    right: 5px;
+    top: 18.5%;
+    z-index: 60;
+    opacity: 0;
+}
+#sea .cloud2{
+    background: url("../img/window/sea/cloud02.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 25.5%;
+    height: 8.6%;
+    left: -8.5%;
+    top: 17%;
+    z-index: 60;
+    opacity: 0;
+}
+#sea .cloud3{
+    background: url("../img/window/sea/cloud03.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 6%;
+    height: 3.9%;
+    left: 52.7%;
+    top: 15.4%;
+    z-index: 60;
+    opacity: 0;
+}
+#sea .cloud4{
+    background: url("../img/window/sea/cloud04.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 13.8%;
+    height: 9%;
+    left: 59.7%;
+    top: 5.2%;
+    z-index: 60;
+    opacity: 0;
+}
+#sea .fish{
+    background: url("../img/window/sea/fish.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 9.8%;
+    height: 6.9%;
+    left: 77.6%;
+    top: 36.9%;
+    z-index: 15;
+    opacity: 0;
+}
+#sea .water_flower2{
+    background: url("../img/window/sea/water_flower02.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 2.6%;
+    height: 2%;
+    left: 89.7%;
+    top: 38.2%;
+    z-index: 60;
+    opacity: 0;
+}
+#sea .water_flower1{
+    background: url("../img/window/sea/water_flower01.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 1.8%;
+    height: 2.3%;
+    left: 89.7%;
+    top: 41.6%;
+    z-index: 60;
+    opacity: 0;
+}
+@-webkit-keyframes  wave1{
+    0%{
+        -webkit-transform: translateY(0px);
+        left:0;
+    }
+    10%{
+        -webkit-transform: translateY(5px);
+        left:-5px;
+    }
+    20%{
+        -webkit-transform: translateY(0px);
+        left:-10px;
+    }
+    30%{
+        -webkit-transform: translateY(5px);
+        left:-15px;
+    }
+    40%{
+        -webkit-transform: translateY(0px);
+        left:-20px;
+    }
+    50%{
+        -webkit-transform: translateY(5px);
+        left:-25px;
+    }
+    60%{
+        -webkit-transform: translateY(0px);
+        left:-30px;
+    }
+    70%{
+        -webkit-transform: translateY(5px);
+        left:-35px;
+    }
+    80%{
+        -webkit-transform: translateY(0px);
+        left:-40px;
+    }
+    90%{
+        -webkit-transform: translateY(5px);
+        left:-45px;
+    }
+    100%{
+        -webkit-transform: translateY(0px);
+        left:-50px;
+    }
+}
+@keyframes  wave1{
+    0%{
+        transform: translateY(0px);
+        left:0;
+    }
+    10%{
+        transform: translateY(5px);
+        left:-5px;
+    }
+    20%{
+        transform: translateY(0px);
+        left:-10px;
+    }
+    30%{
+        transform: translateY(5px);
+        left:-15px;
+    }
+    40%{
+        transform: translateY(0px);
+        left:-20px;
+    }
+    50%{
+        transform: translateY(5px);
+        left:-25px;
+    }
+    60%{
+        transform: translateY(0px);
+        left:-30px;
+    }
+    70%{
+        transform: translateY(5px);
+        left:-35px;
+    }
+    80%{
+        transform: translateY(0px);
+        left:-40px;
+    }
+    90%{
+        transform: translateY(5px);
+        left:-45px;
+    }
+    100%{
+        transform: translateY(0px);
+        left:-50px;
+    }
+}
+@-webkit-keyframes  wave2{
+    0%{
+        -webkit-transform: translateY(3px);
+        left:0;
+    }
+    10%{
+        -webkit-transform: translateY(1px);
+        left:-5px;
+    }
+    20%{
+        -webkit-transform: translateY(4px);
+        left:-10px;
+    }
+    30%{
+        -webkit-transform: translateY(3px);
+        left:-15px;
+    }
+    40%{
+        -webkit-transform: translateY(1px);
+        left:-20px;
+    }
+    50%{
+        -webkit-transform: translateY(4px);
+        left:-25px;
+    }
+    60%{
+        -webkit-transform: translateY(3px);
+        left:-30px;
+    }
+    70%{
+        -webkit-transform: translateY(1px);
+        left:-35px;
+    }
+    80%{
+        -webkit-transform: translateY(4px);
+        left:-40px;
+    }
+    90%{
+        -webkit-transform: translateY(3px);
+        left:-45px;
+    }
+    100%{
+        -webkit-transform: translateY(0px);
+        left:-50px
+    }
+}
+@keyframes  wave2{
+    0%{
+        transform: translateY(3px);
+        left:0;
+    }
+    10%{
+        transform: translateY(1px);
+        left:-5px;
+    }
+    20%{
+        transform: translateY(4px);
+        left:-10px;
+    }
+    30%{
+        transform: translateY(3px);
+        left:-15px;
+    }
+    40%{
+        transform: translateY(1px);
+        left:-20px;
+    }
+    50%{
+        transform: translateY(4px);
+        left:-25px;
+    }
+    60%{
+        transform: translateY(3px);
+        left:-30px;
+    }
+    70%{
+        transform: translateY(1px);
+        left:-35px;
+    }
+    80%{
+        transform: translateY(4px);
+        left:-40px;
+    }
+    90%{
+        transform: translateY(3px);
+        left:-45px;
+    }
+    100%{
+        transform: translateY(0px);
+        left:-50px
+    }
+}
+@-webkit-keyframes sun{
+    0%{
+        -webkit-transform: scale(1);
+    }
+    50%{
+        -webkit-transform: scale(1.1);
+    }
+    100%{
+        -webkit-transform: scale(1);
+    }
+}
+@keyframes sun{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes cloud1{
+    0%{
+        -webkit-transform: translate(0px);
+    }
+    100%{
+        -webkit-transform: translate(30px);
+    }
+}
+@keyframes cloud1{
+    0%{
+        transform: translate(0px);
+    }
+    100%{
+        transform: translate(30px);
+    }
+}
+@-webkit-keyframes cloud2{
+     0%{
+         -webkit-transform: translate(0px);
+     }
+     100%{
+         -webkit-transform: translate(-30px);
+     }
+ }
+@keyframes cloud2{
+    0%{
+        transform: translate(0px);
+    }
+    100%{
+        transform: translate(-30px);
+    }
+}
+@-webkit-keyframes fish{
+    0%{
+        -webkit-transform: rotate(160deg);
+    }
+    100%{
+        -webkit-transform: rotate(-160deg);
+    }
+}
+@keyframes fish{
+    0%{
+        transform: rotate(160deg);
+    }
+    100%{
+        transform: rotate(-160deg);
+    }
+}
+@-webkit-keyframes water_flower{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    55%{
+        opacity: 1;
+    }
+    60%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes water_flower{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    55%{
+        opacity: 1;
+    }
+    60%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+#sea .sea_show{
+    left:0;
+    transition: left 0.5s ease-in;
+    -webkit-transition: left 0.5s ease-in;
+}
+#sea .sea_move1{
+    animation: wave1 10s ease-in 0.6s infinite alternate;
+    -webkit-animation: wave1 10s ease-in 0.6s infinite alternate;
+}
+#sea .sea_move2{
+    animation: wave2 10s ease-in 0.6s infinite alternate;
+    -webkit-animation: wave2 10s ease-in 0.6s infinite alternate;
+}
+#sea .sea_move3{
+    animation: wave1 10s ease-in 0.8s infinite alternate;
+    -webkit-animation: wave1 10s ease-in 0.8s infinite alternate;
+}
+#sea .sea_move4{
+    animation: wave2 10s ease-in 0.8s infinite alternate;
+    -webkit-animation: wave2 10s ease-in 0.8s infinite alternate;
+}
+#sea .sea_move5{
+    animation: wave1 10s ease-in 0.7s infinite alternate;
+    -webkit-animation: wave1 10s ease-in 0.7s infinite alternate;
+}
+#sea .chair_show{
+    top: 63.3%;
+    transition:top 0.5s ease-in 0.6s;
+    -webkit-transition:top 0.5s ease-in 0.6s;
+}
+#sea .cloud_show1{
+    opacity: 1;
+    transition: opacity 0.5s linear 1.1s;
+    -webkit-transition: opacity 0.5s linear 1.1s;
+}
+#sea .cloud_show2{
+    opacity: 1;
+    transition: opacity 0.5s linear 1.2s;
+    -webkit-transition: opacity 0.5s linear 1.2s;
+}
+#sea .cloud_show3{
+    opacity: 1;
+    transition: opacity 0.5s linear 1.3s;
+    -webkit-transition: opacity 0.5s linear 1.3s;
+}
+#sea .sun_rise{
+    left: 6.7%;
+    top: 16.5%;
+    transition:all 1s linear 1.2s;
+    -webkit-transition:all 1s linear 1.2s;
+}
+#sea .sun_shine{
+    animation: sun 2s infinite alternate linear 2.2s;
+    -webkit-animation: sun 2s infinite alternate linear 2.2s;
+}
+#sea .cloud_move1{
+    animation: cloud1 4s linear infinite alternate;
+    -webkit-animation: cloud1 4s linear infinite alternate;
+}
+#sea .cloud_move2{
+    animation: cloud2 4s linear infinite alternate;
+    -webkit-animation: cloud2 4s linear infinite alternate;
+}
+#sea .fish_show{
+    opacity: 1;
+    transition: opacity 0.4s linear 1s;
+    -webkit-transition: opacity 0.4s linear 1s;
+}
+#sea .fish_move{
+    transform-origin:0px 48px;
+    -webkit-transform-origin:0px 48px;
+    animation: fish 3s ease-in infinite 1s;
+    -webkit-animation: fish 3s ease-in infinite 1s;
+}
+#sea .flower_show{
+    animation: water_flower 4s ease-in infinite .4s;
+    -webkit-animation: water_flower 4s ease-in infinite .4s;
+}
+#sea .star_show1{
+    top: 90.8%;
+    transition: top 0.5s ease-in 2.6s;
+    -webkit-transition: top 0.5s ease-in 2.6s;
+}
+#sea .star_show2{
+    top: 64.4%;
+    transition: top 0.5s ease-in 2.6s;
+    -webkit-transition: top 0.5s ease-in 2.6s;
+}
+    /*海滩结束*/
+    /*春天开始*/
+#spring .sky{
+    background: url("../img/window/spring/sky.png") no-repeat center;
+    background-size: 100% 100%;
+    bottom: 100%;
+    left: 0;
+    width: 105%;
+    height:69.2%;
+    z-index: 1;
+}
+#spring .land{
+    background: url("../img/window/spring/land.png") no-repeat center;
+    background-size: 100% 100%;
+    top: 100%;
+    left: 0;
+    width: 105%;
+    height:30.8%;
+    z-index: 1;
+}
+#spring .grass1{
+    background: url("../img/window/spring/grass1.png") no-repeat center bottom;
+    background-size: 100% 100%;
+    width: 41.8%;
+    height: 0;
+    left: 25.5%;
+    bottom:-6%;
+    z-index: 10;
+}
+#spring .grass2{
+    background: url("../img/window/spring/grass2.png") no-repeat center bottom;
+    background-size: 100% 100%;
+    width: 9.8%;
+    height: 0;
+    left: 84%;
+    bottom:20.6%;
+    z-index: 10;
+}
+#spring .grass3{
+    background: url("../img/window/spring/grass3.png") no-repeat center bottom;
+    background-size: 100% 100%;
+    width: 15.7%;
+    height: 0;
+    left: 5.6%;
+    bottom:13.9%;
+    z-index: 10;
+}
+#spring .grass4{
+    background: url("../img/window/spring/grass4.png") no-repeat center bottom;
+    background-size: 100% 100%;
+    width: 28.6%;
+    height: 0;
+    left: 51%;
+    bottom:13.6%;
+    z-index: 10;
+}
+#spring .river{
+    background: url("../img/window/spring/river.png") no-repeat center bottom;
+    background-size: cover;
+    width: 60.3%;
+    height: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+#spring .hill1{
+    background: url("../img/window/spring/hill1.png") no-repeat center top;
+    width: 100%;
+    height: 0;
+    bottom: 30.9%;
+    left: 0;
+    z-index: 10;
+}
+#spring .hill2{
+    background: url("../img/window/spring/hill2.png") no-repeat center top;
+    width: 71.6%;
+    height: 0;
+    bottom: 30.9%;
+    right: 0;
+    z-index: 1;
+}
+#spring .cloud0{
+    background: url("../img/window/spring/cloud00.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 11.9%;
+    height: 3.9%;
+    top: 50%;
+    left: 31.4%;
+    z-index: 20;
+    opacity: 0;
+}
+#spring .cloud1{
+    background: url("../img/window/spring/cloud01.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 23.5%;
+    height: 9%;
+    top: 35.8%;
+    left: 70.7%;
+    z-index: 20;
+    opacity: 0;
+}
+#spring .cloud2{
+    background: url("../img/window/spring/cloud02.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 25.5%;
+    height: 11.9%;
+    top: 15.5%;
+    left: 13.2%;
+    z-index: 20;
+    opacity: 0;
+}
+#spring .cloud3{
+    background: url("../img/window/spring/cloud03.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 6.2%;
+    height: 3.9%;
+    top: 16%;
+    left: 36%;
+    z-index: 20;
+    opacity: 0;
+}
+#spring .cloud4{
+    background: url("../img/window/spring/cloud04.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 9.8%;
+    height: 6.4%;
+    top: 9.3%;
+    left: 39.7%;
+    z-index: 20;
+    opacity: 0;
+}
+#spring .ball1{
+    background: url("../img/window/spring/ball01.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 8.2%;
+    height: 11.9%;
+    top: -50%;
+    left: 59%;
+    z-index: 20;
+}
+#spring .ball2{
+    background: url("../img/window/spring/ball02.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 17.3%;
+    height: 25%;
+    top: -50%;
+    left: 66.5%;
+    z-index: 20;
+}
+#spring .tree1{
+    background: url("../img/window/spring/tree1.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 11%;
+    top: -50%;
+    left: 11%;
+    z-index: 30;
+}
+#spring .tree2{
+    background: url("../img/window/spring/tree2.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 7%;
+    height: 11%;
+    top: -50%;
+    left: 28%;
+    z-index: 30;
+}
+#spring .tree3{
+    background: url("../img/window/spring/tree3.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 10.3%;
+    height: 15.7%;
+    top: -50%;
+    left: 63%;
+    z-index: 30;
+}
+#spring .tree4{
+    background: url("../img/window/spring/tree4.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 15.2%;
+    height: 23.2%;
+    top: -50%;
+    left: 1%;
+    z-index: 25;
+}
+#spring .tree5{
+    background: url("../img/window/spring/tree5.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 13.9%;
+    height: 21.1%;
+    top: -50%;
+    left: 13%;
+    z-index: 25;
+}
+#spring .tree6{
+    background: url("../img/window/spring/tree6.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 12.9%;
+    height: 19.1%;
+    top: -50%;
+    left: 83%;
+    z-index: 30;
+}
+#spring .tree7{
+    background: url("../img/window/spring/tree7.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 13.4%;
+    height: 20.4%;
+    top: -50%;
+    left: 76%;
+    z-index: 25;
+}
+@-webkit-keyframes cloud_move1{
+    0%{
+        -webkit-transform: translateX(0px);
+    }
+    100%{
+        -webkit-transform: translateX(30px);
+    }
+}
+@keyframes cloud_move1{
+    0%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(30px);
+    }
+}
+@-webkit-keyframes cloud_move2{
+    0%{
+        -webkit-transform: translateX(0px);
+    }
+    100%{
+        -webkit-transform: translateX(-30px);
+    }
+}
+@keyframes cloud_move2{
+    0%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(-30px);
+    }
+}
+@-webkit-keyframes ball_move{
+    0%{
+        -webkit-transform: translateY(0px);
+    }
+    25%{
+        -webkit-transform: translateY(-5px);
+    }
+    50%{
+        -webkit-transform: translateY(0px);
+    }
+    75%{
+        -webkit-transform: translateY(5px);
+    }
+    100%{
+        -webkit-transform: translateY(0px);
+    }
+}
+@keyframes ball_move{
+    0%{
+        transform: translateY(0px);
+    }
+    25%{
+        transform: translateY(-5px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+    75%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+#spring .sky_show{
+    bottom: 30.8%;
+    transition: bottom 0.5s linear;
+    -webkit-transition: bottom 0.5s linear;
+}
+#spring .land_show{
+    top: 69.2%;
+    transition: top 0.5s linear;
+    -webkit-transition: top 0.5s linear;
+}
+#spring .cloud_show{
+    opacity: 1;
+    transition: opacity .8s linear 0.6s;
+    -webkit-transition: opacity .8s linear 0.6s;
+}
+#spring .ball_show1{
+    top: 17.5%;
+    transition: top 0.5s ease-in 1.2s;
+    -webkit-transition: top 0.5s ease-in 1.2s;
+}
+#spring .ball_show2{
+    top: 2.6%;
+    transition: top 0.5s ease-in 1.2s;
+    -webkit-transition: top 0.5s ease-in 1.2s;
+}
+#spring .hill_show1{
+    height: 21.1%;
+    transition: height 0.3s ease-in 1.1s;
+    -webkit-transition: height 0.3s ease-in 1.1s;
+}
+#spring .hill_show2{
+    height: 27%;
+    transition: height 0.3s ease-in 1.2s;
+    -webkit-transition: height 0.3s ease-in 1.2s;
+}
+#spring .grass_show1{
+    height: 18.3%;
+    transition: height 0.3s linear 1.3s;
+    -webkit-transition: height 0.3s linear 1.3s;
+}
+#spring .grass_show2{
+    height: 4.9%;
+    transition: height 0.3s linear 1.7s;
+    -webkit-transition: height 0.3s linear 1.7s;
+}
+#spring .grass_show3{
+    height: 8%;
+    transition: height 0.3s linear 1.5s;
+    -webkit-transition: height 0.3s linear 1.5s;
+}
+#spring .grass_show4{
+    height: 9%;
+    transition: height 0.3s linear 1.5s;
+    -webkit-transition: height 0.3s linear 1.5s;
+}
+#spring .tree_show1{
+    top: 62%;
+    transition: top 0.3s ease-in 1.8s;
+    -webkit-transition: top 0.3s ease-in 1.8s;
+}
+#spring .tree_show2{
+    top: 60%;
+    transition: top 0.3s ease-in 1.9s;
+    -webkit-transition: top 0.3s ease-in 1.9s;
+}
+#spring .tree_show3{
+    top: 56%;
+    transition: top 0.3s ease-in 2.0s;
+    -webkit-transition: top 0.3s ease-in 2.0s;
+}
+#spring .tree_show4{
+    top: 47%;
+    transition: top 0.3s ease-in 2.1s;
+    -webkit-transition: top 0.3s ease-in 2.1s;
+}
+#spring .tree_show5{
+    top: 50%;
+    transition: top 0.3s ease-in 2.2s;
+    -webkit-transition: top 0.3s ease-in 2.2s;
+}
+#spring .tree_show6{
+    top: 53%;
+    transition: top 0.3s ease-in 2.3s;
+    -webkit-transition: top 0.3s ease-in 2.3s;
+}
+#spring .tree_show7{
+    top: 52%;
+    transition: top 0.3s ease-in 2.4s;
+    -webkit-transition: top 0.3s ease-in 2.4s;
+}
+#spring .river_show{
+    height: 30.6%;
+    transition: height 1.2s linear 2.8s;
+    -webkit-transition: height 1.2s linear 2.8s;
+}
+#spring .cloud_move1{
+    animation: cloud_move1 4s infinite alternate linear;
+    -webkit-animation: cloud_move1 4s infinite alternate linear;
+}
+#spring .cloud_move2{
+    animation: cloud_move2 4s infinite alternate linear;
+    -webkit-animation: cloud_move2 4s infinite alternate linear;
+}
+#spring .ball_move1{
+    animation: ball_move 2s infinite alternate linear;
+    -webkit-animation: ball_move 2s infinite alternate linear;
+}
+#spring .ball_move2{
+    animation: ball_move 2s infinite alternate linear 0.8s;
+    -webkit-animation: ball_move 2s infinite alternate linear 0.8s;
+}
+    /*春天结束*/
+    /*雪景开始*/
+#snow_point{
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height:100%;
+    left: 0;
+    top:0;
+}
+#snow .sky{
+    background: url("../img/window/snow/sky.png") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 75%;
+    top:0;
+    left: 100%;
+    z-index: 1;
+}
+#snow .land{
+    background: url("../img/window/snow/land.png") no-repeat center;
+    background-size: 100%;
+    width: 100%;
+    height: 36%;
+    top:65%;
+    left: -100%;
+    z-index: 5;
+}
+#snow .dui{
+    background: url("../img/window/snow/dui.png") no-repeat center top;
+    background-size: cover;
+    width: 100%;
+    height: 12.1%;
+    left: -6.7%;
+    bottom:100%;
+    z-index: 60;
+}
+#snow .hill11{
+     background: url("../img/window/snow/hill11.png") no-repeat center top;
+     background-size:cover;
+     width: 91.5%;
+    height: 0;
+     left: 6%;
+    bottom:24.6%;
+     z-index: 10;
+ }
+#snow .hill12{
+    background: url("../img/window/snow/hill12.png") no-repeat center top;
+    background-size:cover;
+    width: 43%;
+    height: 0;
+    left: 28.7%;
+    bottom:41%;
+    z-index: 15;
+}
+#snow .hill13{
+    background: url("../img/window/snow/hill13.png") no-repeat center top;
+    background-size:cover;
+    width: 28.4%;
+    height: 0;
+    left: 34.4%;
+    bottom:49%;
+    z-index: 10;
+}
+#snow .hill3{
+    background: url("../img/window/snow/hill3.png") no-repeat center top;
+    background-size: 100% 100%;
+    width:16%;
+    height: 11.1%;
+    left: 69%;
+    bottom:100%;
+    z-index: 30;
+}
+#snow .hill2{
+    background: url("../img/window/snow/hill2.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 41%;
+    height: 25.2%;
+    left: 0;
+    bottom:100%;
+    z-index: 20;
+}
+#snow .tree3{
+    background: url("../img/window/snow/tree3.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 7.7%;
+    height: 8.9%;
+    left: 83.5%;
+    top:-65.9%;
+    z-index: 15;
+}
+#snow .tree2{
+    background: url("../img/window/snow/tree2.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 11.9%;
+    height: 19.1%;
+    left: 9%;
+    top:-63.1%;
+    z-index: 50;
+}
+#snow .tree1{
+    background: url("../img/window/snow/tree1.png") no-repeat center top;
+    background-size: 100% 100%;
+    width: 17.5%;
+    height:41.5%;
+    left: 24.5%;
+    top:-50%;
+    z-index: 40;
+}
+#snow .sky_show{
+    left:0;
+    transition: left 0.5s linear;
+    -webkit-transition: left 0.5s linear;
+}
+#snow .land_show{
+    left:0;
+    transition: left 0.5s linear;
+    -webkit-transition: left 0.5s linear;
+}
+#snow .dui_show{
+    bottom:14.2%;
+    transition: bottom 0.3s ease-in 1.2s;
+    -webkit-transition: bottom 0.3s ease-in 1.2s;
+}
+#snow .hill_show11{
+    height: 23.5%;
+    transition: height 0.3s linear 0.6s;
+    -webkit-transition: height 0.3s linear 0.6s;
+}
+#snow .hill_show12{
+    height: 14.2%;
+    transition: height 0.2s linear 0.9s;
+    -webkit-transition: height 0.2s linear 0.9s;
+}
+#snow .hill_show13{
+    height: 12.4%;
+    transition: height 0.2s linear 1.1s;
+    -webkit-transition: height 0.2s linear 1.1s;
+}
+#snow .hill_show2{
+    bottom:24.6%;
+    transition: bottom 0.5s ease-in 1.6s;
+    -webkit-transition: bottom 0.5s ease-in 1.6s;
+}
+#snow .hill_show3{
+    bottom:22.3%;
+    transition: bottom 0.5s ease-in 1.9s;
+    -webkit-transition: bottom 0.5s ease-in 1.9s;
+}
+#snow .tree_show1{
+    top:35.9%;
+    transition: top 0.5s ease-in 2.3s;
+    -webkit-transition: top 0.5s ease-in 2.3s;
+}
+#snow .tree_show2{
+    top:63.1%;
+    transition: top 0.5s ease-in 2.7s;
+    -webkit-transition: top 0.5s ease-in 2.7s;
+}
+#snow .tree_show3{
+    top:65.9%;
+    transition: top 0.5s ease-in 3s;
+    -webkit-transition: top 0.5s ease-in 3s;
+}
+    /*雪景结束*/
+/*窗户结束*/
+/*桌子开始*/
+.section2{
+    background-image:url("../img/table/bg.png");
+    background-size:cover;
+}
+/*桌子结束*/
+/*牛奶开始*/
+.section3{
+    background-image:url("../img/loading_bg.png");
+    background-size:cover;
+}
+#milk{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left: 0;
+    text-align: center;
+}
+#milk img{
+    position: absolute;
+    width: 640px;
+    top:0;
+    left: 0;
+}
+#milk .bowl{
+    top:51px;
+    left: 0;
+    width: 640px;
+    z-index: 1;
+}
+#milk1{
+    z-index: 10;
+}
+#milk2{
+    z-index: 20;
+}
+#milk3{
+    z-index: 30;
+}
+#milk4{
+    z-index: 40;
+}
+#milk .change_small{
+    top:51px;
+    left: 137px;
+    width: 376px;
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+}
+#milk .milk{
+    opacity: 0;
+}
+#milk .show{
+    opacity: 1;
+    transition: opacity 0.3s linear;
+    -webkit-transition: opacity 0.3s linear;
+}
+#logo{
+    background: url("../img/milk/font_logo.png") no-repeat top center;
+    position: absolute;
+    width: 198px;
+    height: 20px;
+    left: 221px;
+    top:85%;
+    opacity: 0;
+}
+#btn_link{
+    display: block;
+    background: url("../img/milk/link.png") no-repeat top center;
+    position: absolute;
+    width: 270px;
+    height: 67px;
+    left: 185px;
+    top:77%;
+    opacity: 0;
+}
+#list{
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    width: 370px;
+    height: 70px;
+    left: 135px;
+    top:91%;
+    opacity: 0;
+}
+#list div.first{
+    background: url("../img/milk/list.png") no-repeat top center;
+    width: 370px;
+    height: 40px;
+}
+#list div.last{
+    width: 370px;
+    height: 30px;
+}
+#list p.first{
+    width: 185px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+#list p.last{
+    width: 185px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+#btn_link.btn_link_show{
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0.5s;
+    -webkit-transition: opacity 0.5s ease-out 0.5s;
+}
+#logo.logo_show{
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0.8s;
+    -webkit-transition: opacity 0.5s ease-out 0.8s;
+}
+#list.list_show{
+    opacity: 1;
+    transition: opacity 0.5s ease-out 1.1s;
+    -webkit-transition: opacity 0.5s ease-out 1.1s;
+}
+/*牛奶结束*/
+/*横屏提示开始*/
+#landscape{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 50000;
+}
+@media all and (orientation: portrait) {
+    #landscape{
+        display: none;
+    }
+    #music{
+        display: block;
+    }
+    #cas{
+        display: block;
+    }
+    #load_moon{
+        display: inline-block;
+    }
+    #load_text{
+        display: inline-block;
+    }
+    #temporaryBg_scroll{
+        display: block;
+    }
+}
+@media all and (orientation: landscape) {
+    #landscape{
+        background:url("../img/loading_rotate.png") center no-repeat;
+        background-size: cover;
+    }
+    #music{
+        display: none;
+    }
+    #cas{
+        display: none;
+    }
+    #load_moon{
+        display: none;
+    }
+    #load_text{
+        display: none;
+    }
+    #temporaryBg_scroll{
+        display: none;
+    }
+}
+/*横屏提示结束*/
+/*遮挡开始*/
+#occlusion{
+    position: absolute;
+    top:0;
+    left: 2px;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background-image:url('../img/window/bg_dang.png') ;
+    background-repeat:no-repeat ;
+    background-position:center center;
+}
+/*遮挡结束*/
