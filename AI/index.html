@@ -74,6 +74,14 @@
             color:#333;
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
         }
+        #tishi{
+            width: 100%;
+            font-size: 25px;
+            line-height: 25px;
+            height: 25px;
+            text-align: center;
+            color:#333;
+        }
         .iq__img{
             margin-top:200px;
             margin-left: 400px;
@@ -87,6 +95,7 @@
     <div class="iq">
         <div class="iq__title">人工智能测智商！！！</div>
         <input class="iq__input" placeholder="输入您真实姓名">
+        <div id="tishi"></div>
         <img class="iq__img" src="1.png">
     </div>
     <div class="result">
@@ -97,11 +106,18 @@
     </div>
     <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
     <script>
+        $('#body')[0].addEventListener('touchstart', function (event) {
+            event.stopPropagation();
+            return false;
+        });
         $('.iq__input').on('input',function (){
             var inner=$(this).val();
             if(inner=='熊新'){
-                $('.iq__input').attr('disabled','');
+                $('#tishi').fadeOut(0);
+//                $('.iq__input').attr('disabled','');
                 $('.iq').fadeOut();
+            }else{
+                $('#tishi').text('真实姓名！！懂不！');
             }
         })
     </script>
