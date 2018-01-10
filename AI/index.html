@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>测智商，有惊喜</title>
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w / 750;
+            document.getElementById('viewport').content = 'width=750,initial-scale=' + s + ',minimum-scale=' + s +
+                    ',maximum-scale=' + s + ',user-scalable=no';
+        })();
+        function isWeChart(){//判断是否是微信
+            var ua = navigator.userAgent.toLowerCase().match(/MicroMessenger/i);
+            if(ua=="micromessenger"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+            return false;
+        });
+        document.addEventListener('touchstart', function (event) {
+            event.preventDefault();
+            return false;
+        });
+    </script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: #eee;
+        }
+        .iq,.result{
+            position: absolute;
+            left: 0;
+            top:0;
+            background: #eee;
+            width: 100%;
+            height: 100%;
+        }
+        .iq{
+            z-index: 10;
+        }
+        .iq__title,.result__title{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 40px;
+            color:#333;
+            letter-spacing: 1px;
+            margin-top: 150px;
+        }
+        .iq__input{
+            width: 700px;
+            outline: none;
+            height: 50px;
+            font-size: 35px;
+            text-align: center;
+            border: 1px #66afe9 solid;
+            background: transparent;
+            margin: 80px auto 0;
+            display: block;
+            color:#333;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+        .iq__img{
+            margin-top:200px;
+            margin-left: 400px;
+        }
+        .result__img{
+            margin-top:120px;
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="iq">
+        <div class="iq__title">人工智能测智商！！！</div>
+        <input class="iq__input" placeholder="输入您真实姓名">
+        <img class="iq__img" src="1.png">
+    </div>
+    <div class="result">
+        <div class="result__title">
+            就你这智商还测什么测，回家种地吧:-D
+        </div>
+        <img src="2.png" class="result__img">
+    </div>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script>
+        $('.iq__input').on('input',function (){
+            var inner=$(this).val();
+            if(inner=='熊新'){
+                $('.iq__input').attr('disabled','');
+                $('.iq').fadeOut();
+            }
+        })
+    </script>
+</body>
+</html>
