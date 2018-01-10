@@ -51,6 +51,9 @@
         .iq{
             z-index: 10;
         }
+        .result{
+            display: none;
+        }
         .iq__title,.result__title{
             width: 100%;
             height: 50px;
@@ -98,26 +101,42 @@
         <div id="tishi"></div>
         <img class="iq__img" src="1.png">
     </div>
-    <div class="result">
+    <div class="result" id="result1">
         <div class="result__title">
             就你这智商还测什么测，回家种地吧:-D
         </div>
         <img src="2.png" class="result__img">
     </div>
+    <div class="result" id="result2">
+        <div class="result__title">
+            你的智商已经超越天际！！不用测了
+        </div>
+    </div>
     <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
     <script>
+        var change=false;
         $('#body')[0].addEventListener('touchstart', function (event) {
             event.stopPropagation();
             return false;
         });
         $('.iq__input').on('input',function (){
             var inner=$(this).val();
-            if(inner=='熊新'){
-                $('#tishi').fadeOut(0);
-//                $('.iq__input').attr('disabled','');
-                $('.iq').fadeOut();
+            $('#tishi').text('真实姓名！！懂不！');
+            if(inner=='1104'){
+                change=true;
+            }
+            if(change==false){
+                if(inner=='熊新'){
+                    $('#tishi').fadeOut(0);
+                    $('.iq').fadeOut();
+                    $('#result1').fadeIn();
+                }
             }else{
-                $('#tishi').text('真实姓名！！懂不！');
+                if(inner=='何明泽'){
+                    $('#tishi').fadeOut(0);
+                    $('.iq').fadeOut();
+                    $('#result2').fadeIn();
+                }
             }
         })
     </script>
