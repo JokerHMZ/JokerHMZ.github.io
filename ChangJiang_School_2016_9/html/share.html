@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>长江商学院</title>
+    <meta name="viewport" id="viewport" content="width=640,user-scalable=no,target-densitydpi=320">
+    <link rel="stylesheet" href="../css/animate.min.css"/>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background:#14141e url("../img/bg.png") no-repeat center;
+        }
+        #img{
+            width: 640px;
+            height: 841px;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            top:17px;
+            padding:16px;
+            background:url("../img/border.png") no-repeat;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+        }
+        #join{
+            display: block;
+            position: absolute;
+            width: 360px;
+            height:77px;
+            top:876px;
+            left: 140px;
+            background: url("../img/join.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        @media all and (min-height: 1040px){
+            #img{
+                top:55px;
+            }
+            #join{
+                top:958px;
+            }
+        }
+    </style>
+    <!-- uniclickTracking -->
+    <script type="text/javascript">
+        var _utaq = _utaq || [];
+        _utaq.push(["trackPageView"]);
+        _utaq.push(["enableLinkTracking"]);
+        (function() {
+            var utu=(("https:" == document.location.protocol) ? "https" : "http") + "://sit.gentags.net/";
+            _utaq.push(["setTrackerUrl", utu+"site/unids.gif"]);
+            _utaq.push(["setSiteId", "1598"]);
+            var t=parseInt((new Date()).getTime()/1000);
+            var utd=document, ut=utd.createElement("script"), s=utd.getElementsByTagName("script")[0]; ut.type="text/javascript";
+            ut.defer=true; ut.async=true; ut.src=utu+"adagent/js/uta.js?v="+(t-t%300); s.parentNode.insertBefore(ut,s);
+        })();
+    </script>
+    <noscript><img src="http://sit.gentags.net/site/img?site=1598" style="border:0" alt=""/></noscript>
+    <!-- End uniclickTracking Code -->
+</head>
+<body>
+    <img id="img">
+    <a id="join" href="index.html" target="_self" onclick="javascript:_utaq.push(['trackEvent','btn-canjia']);"></a>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script>
+        document.addEventListener('touchmove',function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        });
+        setTimeout(function (){
+            $("#join").addClass("pulse");
+            $("#join").addClass("animated");
+        },200);
+        var img=document.getElementById("img");
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (!!r) {
+                return (r[2]);
+            } else {
+                return null;
+            }
+        }
+        var src=getQueryString("k");
+        img.src=src;
+        $.ajax({
+            type:"POST",
+            url:"http://www.hyhmk.com/cjsxytime/index.php?control=Api&action=wxShare",
+            data:{url:window.location.href},
+            dataType:"json",
+            success:function (data){
+                //通过config接口注入权限验证配置
+                wx.config({
+                    debug: false,
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+                });
+                // 分享后标题
+                var otitle = "因为向往大海，所以汇入长江。";
+                // 分享朋友圈后描述
+                var desc ="长江时代周刊封面空缺，等待不同的你登上首页。";
+                // 分享个人后描述
+                var descSingle ="长江时代周刊封面空缺，等待不同的你登上首页。";
+                // 分享后B用户打开的地址
+                var olink ="http://www.hyhmk.com/cjsxytime";
+                // 分享图片
+                var oimgUrl ="http://www.hyhmk.com/cjsxytime/static/wshare.png";
+                wx.ready(function (){
+                    wx.onMenuShareTimeline({
+                        title: desc,
+                        link:  olink,
+                        imgUrl: oimgUrl
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: otitle,
+                        desc:  descSingle,
+                        link: olink,
+                        imgUrl: oimgUrl
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
