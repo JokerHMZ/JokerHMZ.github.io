@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=640,user-scalable=no,target-densitydpi=320">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>特仑苏</title>
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <link rel="stylesheet" href="css/common.css?v=4"/>
+    <link rel="stylesheet" href="css/style.css?v=13" />
+    <link rel="stylesheet" href="css/HMZmain.css?v=9"/>
+    <script>
+        var meitu = (function(){
+            var ua = navigator.userAgent.toLowerCase().match(/com.meitu.mtxx/i);
+            if(ua=="com.meitu.mtxx"){
+                return true;
+            }else{
+                return false;
+            }
+        })();
+        function juestWX(){
+            var ua = navigator.userAgent.toLowerCase().match(/MicroMessenger/i);
+            if(ua=="micromessenger"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (!!r) {
+                return (r[2]);
+            } else {
+                return null;
+            }
+        }
+        var cover = getQueryString('cover');
+        var media = getQueryString('media');
+        var isWeiXin=juestWX();
+        var uri = 'http://cny.telunsu.net/2017/api/index.php?control=Api&action=location';
+        if(!!cover) {
+            uri+='&cover='+cover;
+        }
+        if(!!media) {
+            uri+='&media='+media;
+        }
+        var canJump=getQueryString("openID");
+        if(canJump==null){
+            if(isWeiXin){
+                location.href=uri;
+            }else{//非微信秒针检测
+                if(!!media){
+                    (function(a, e, f, g, b, c, d) {a.ClickiTrackerName = b;
+                        a[b] = a[b] || function() {(a[b].queue = a[b].queue || []).push(arguments)};
+                        a[b].start = +new Date; c = e.createElement(f); d = e.getElementsByTagName(f)[0];
+                        c.async = 1; c.src = g; d.parentNode.insertBefore(c, d)
+                    })(window, document, 'script', ('https:' == document.location.protocol ? 'https://stm-collect' : 'http://stm-cdn') + '.cn.miaozhen.com/clicki.min.js', 'stm_clicki');
+                    stm_clicki('create', 'dc-815', 'auto');
+                    stm_clicki('send', 'pageview');
+                }
+            }
+        }else{//微信授权后秒针检测
+            if(!!media){
+                (function(a, e, f, g, b, c, d) {a.ClickiTrackerName = b;
+                    a[b] = a[b] || function() {(a[b].queue = a[b].queue || []).push(arguments)};
+                    a[b].start = +new Date; c = e.createElement(f); d = e.getElementsByTagName(f)[0];
+                    c.async = 1; c.src = g; d.parentNode.insertBefore(c, d)
+                })(window, document, 'script', ('https:' == document.location.protocol ? 'https://stm-collect' : 'http://stm-cdn') + '.cn.miaozhen.com/clicki.min.js', 'stm_clicki');
+                stm_clicki('create', 'dc-815', 'auto');
+                stm_clicki('send', 'pageview');
+            }
+        }
+    </script>
+    <!--<script>-->
+        <!--if(!!media){-->
+            <!--(function(a, e, f, g, b, c, d) {a.ClickiTrackerName = b;-->
+                <!--a[b] = a[b] || function() {(a[b].queue = a[b].queue || []).push(arguments)};-->
+                <!--a[b].start = +new Date; c = e.createElement(f); d = e.getElementsByTagName(f)[0];-->
+                <!--c.async = 1; c.src = g; d.parentNode.insertBefore(c, d)-->
+            <!--})(window, document, 'script', ('https:' == document.location.protocol ? 'https://stm-collect' : 'http://stm-cdn') + '.cn.miaozhen.com/clicki.min.js', 'stm_clicki');-->
+            <!--stm_clicki('create', 'dc-815', 'auto');-->
+            <!--stm_clicki('send', 'pageview');-->
+        <!--}-->
+    <!--</script>-->
+    <script type="text/javascript">
+        if(isWeiXin){
+            var _utaq = _utaq || [];
+            _utaq.push(["trackPageView"]);
+            _utaq.push(["enableLinkTracking"]);
+            (function() {
+                var utu=(("https:" == document.location.protocol) ? "https" : "http") + "://sit.gentags.net/";
+                _utaq.push(["setTrackerUrl", utu+"site/unids.gif"]);
+                _utaq.push(["setSiteId", "1638"]);
+                var t=parseInt((new Date()).getTime()/1000);
+                var utd=document, ut=utd.createElement("script"), s=utd.getElementsByTagName("script")[0]; ut.type="text/javascript";
+                ut.defer=true; ut.async=true; ut.src=utu+"adagent/js/uta.js?v="+(t-t%300); s.parentNode.insertBefore(ut,s);
+            })();
+            if (typeof _uni_bind != 'function'){function _uni_bind(t,tid,cid,act,pro){var pro = pro || '';_utaq.push(["trackCustomEvent", pro+'cmpp/uniut.gif','action='+act+'&openid='+tid+'&contactid='+cid+'&opentype='+t]);}}
+        }else{
+            var _utaq = _utaq || [];
+            _utaq.push(["trackPageView"]);
+            _utaq.push(["enableLinkTracking"]);
+            (function() {
+                var utu=(("https:" == document.location.protocol) ? "https" : "http") + "://sit.gentags.net/";
+                _utaq.push(["setTrackerUrl", utu+"site/unids.gif"]);
+                _utaq.push(["setSiteId", "1639"]);
+                var t=parseInt((new Date()).getTime()/1000);
+                var utd=document, ut=utd.createElement("script"), s=utd.getElementsByTagName("script")[0]; ut.type="text/javascript";
+                ut.defer=true; ut.async=true; ut.src=utu+"adagent/js/uta.js?v="+(t-t%300); s.parentNode.insertBefore(ut,s);
+            })();
+            if (typeof _uni_bind != 'function'){function _uni_bind(t,tid,cid,act,pro){var pro = pro || '';_utaq.push(["trackCustomEvent", pro+'cmpp/uniut.gif','action='+act+'&openid='+tid+'&contactid='+cid+'&opentype='+t]);}}
+        }
+    </script>
+    <noscript><img src="http://sit.gentags.net/site/img?site=1638" style="border:0" alt="" /></noscript>
+</head>
+<body>
+<div class="cover"></div>
+<div id="logo"></div>
+<div class="load">
+    <div class="load_fps_box">
+        <div class="load_fps"></div>
+        <div class="load_line"></div>
+    </div>
+    <div class="load_text">0%</div>
+    <div class="load_con">
+        <div class="load_light">
+            <div class="HMZ_light">
+                <p class="HMZ_nth1 light_move_top1"></p>
+                <p class="HMZ_nth2 light_move_right1"></p>
+                <p class="HMZ_nth3 light_move_bottom1"></p>
+                <p class="HMZ_nth4 light_move_left1"></p>
+            </div>
+        </div>
+    </div>
+    <div class="load_btn">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div class="main">
+    <canvas id="canvas" width="640" height="525"></canvas>
+    <canvas id="canvasB" width="640" height="525"></canvas>
+    <canvas id="canvasF" width="640" height="525"></canvas>
+    <div class="hill"></div>
+    <div class="slogan"></div>
+    <div class="text text_1"></div>
+    <div class="text text_2"></div>
+    <div class="text text_3"></div>
+    <div class="text text_4"></div>
+    <div class="skip"></div>
+    <!-- <div class="music"></div> -->
+</div>
+<div class="box1">
+    <div class="box1_btn">
+        <div></div>
+        <div></div>
+        <div class="box1_btn_light">
+            <div class="HMZ_light">
+                <p class="HMZ_nth1 light_move_top1"></p>
+                <p class="HMZ_nth2 light_move_right1"></p>
+                <p class="HMZ_nth3 light_move_bottom1"></p>
+                <p class="HMZ_nth4 light_move_left1"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box2">
+    <div class="box2_text">
+        <div class="box2_btn box2_b">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box2_btn_light">
+            <div class="HMZ_light">
+                <p class="HMZ_nth1 light_move_top1"></p>
+                <p class="HMZ_nth2 light_move_right1"></p>
+                <p class="HMZ_nth3 light_move_bottom1"></p>
+                <p class="HMZ_nth4 light_move_left1"></p>
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <video id="video" controls src="src/tvc.mp4" poster="images/TVC.jpg" preload="auto">
+            <source src="src/tvc.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+<div id="HMZ" class="HMZ">
+    <div id="HMZ_personal_center_btn"></div>
+    <div id="HMZ_personal_center" class="hid">
+        <ul class="personal_center_nav">
+            <li>
+                <span data-i="0" class="active"></span>
+            </li>
+            <li>
+                <span data-i="1"></span>
+            </li>
+            <li>
+                <span data-i="2"></span>
+            </li>
+        </ul>
+        <div class="personal_center_main">
+            <div class="prize_record" data-i="0">
+                <div class="commit_list">
+                    <div id="personal_center_tel">
+                        <p></p>
+                        <input type="tel" placeholder="请输入11位有效手机号码"/>
+                        <i class="hid"></i>
+                    </div>
+                    <div id="personal_center_ma">
+                        <p></p>
+                        <input type="text" placeholder="请输入右侧验证码"/>
+                        <span>获取验证码</span>
+                        <i class="hid"></i>
+                    </div>
+                    <div id="personal_center_telMa">
+                        <p></p>
+                        <input type="tel" placeholder="请输入短信验证码"/>
+                        <span>发送</span>
+                        <i class="hid"></i>
+                    </div>
+                    <h1 id="commit_list_btn">
+                        <div class="HMZ_light">
+                            <p class="HMZ_nth1"></p>
+                            <p class="HMZ_nth2"></p>
+                            <p class="HMZ_nth3"></p>
+                            <p class="HMZ_nth4"></p>
+                        </div>
+                    </h1>
+                </div>
+                <div class="record_list hid">
+                    <div id="nutrition">
+                        <ul class="title">
+                            <li class="head"></li>
+                            <!--<li>-->
+                                <!--<span>10元特仑苏优惠券</span>-->
+                                <!--<span class="btn">去购买</span>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<span>10元特仑苏优惠券</span>-->
+                                <!--<span class="btn">去购买</span>-->
+                            <!--</li>-->
+                        </ul>
+                        <ul class="time">
+                            <li class="head"></li>
+                            <!--<li>2016.11.02</li>-->
+                            <!--<li>2016.11.02</li>-->
+                        </ul>
+                    </div>
+                    <div id="HMZHMZline"></div>
+                    <div id="bigPrize">
+                        <ul class="title">
+                            <li class="head"></li>
+                            <!--<li>-->
+                                <!--<span>10元特仑苏优惠券</span>-->
+                                <!--<span class="bigBtn">去购买</span>-->
+                            <!--</li>-->
+                        </ul>
+                        <ul class="time">
+                            <li class="head"></li>
+                            <!--<li>2016.11.02</li>-->
+                            <!--<li>2016.11.02</li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="no_record hid"></div>
+            </div>
+            <div class="prize_explain hid" id="scroll_part_explain" data-i="1">
+                <div class="textHMZ content_outer">
+                    <div class="content_inner">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="scrollBar track">
+                    <div class="scrollBarRect thumb"></div>
+                </div>
+            </div>
+            <div class="statement hid" id="scroll_part_statement" data-i="2">
+                <div class="textHMZ content_outer">
+                    <div class="content_inner">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="scrollBar track">
+                    <div class="scrollBarRect thumb"></div>
+                </div>
+            </div>
+        </div>
+        <div id="personal_center_btn"></div>
+    </div>
+    <div id="HMZ_lottery">
+        <div class="commit_list">
+            <div class="lottery_list_title hid"></div>
+            <div class="lottery_list_banner hid"></div>
+            <div class="list">
+                <div id="HMZ_lottery_tel" class="hid">
+                    <p></p>
+                    <input type="tel" placeholder="请输入11位有效手机号码"/>
+                    <i class="hid"></i>
+                </div>
+                <div id="HMZ_lottery_ma" class="hid">
+                    <p></p>
+                    <input type="text" placeholder="请输入右侧验证码"/>
+                    <span>获取验证码</span>
+                    <i class="hid"></i>
+                </div>
+                <div id="HMZ_lottery_telMa" class="hid">
+                    <p></p>
+                    <input type="tel" placeholder="请输入短信验证码"/>
+                    <span>发送</span>
+                    <i class="hid"></i>
+                </div>
+            </div>
+            <div id="lottery_submit_btn" class="hid">
+                <div class="HMZ_light">
+                    <p class="HMZ_nth1"></p>
+                    <p class="HMZ_nth2"></p>
+                    <p class="HMZ_nth3"></p>
+                    <p class="HMZ_nth4"></p>
+                </div>
+            </div>
+        </div>
+        <div class="get_prize">
+            <div class="inWeiXin">
+                <div class="error hid">
+                    <div class="banner zoomIn animated"></div>
+                    <div class="use fadeIn animated"></div>
+                    <div class="li fadeIn animated"></div>
+                    <div id="iWRBtn" class="fadeIn animated">
+                        <div class="HMZ_light">
+                            <p class="HMZ_nth1"></p>
+                            <p class="HMZ_nth2"></p>
+                            <p class="HMZ_nth3"></p>
+                            <p class="HMZ_nth4"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="success hid">
+                    <div class="title zoomIn animated"></div>
+                    <div class="banner zoomIn animated"></div>
+                    <div class="use fadeIn animated"></div>
+                    <div class="li fadeIn animated"></div>
+                    <div id="iWSBtn" class="fadeIn animated">
+                        <div class="HMZ_light">
+                            <p class="HMZ_nth1"></p>
+                            <p class="HMZ_nth2"></p>
+                            <p class="HMZ_nth3"></p>
+                            <p class="HMZ_nth4"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="outWeiXin">
+                <div class="success hid">
+                    <div class="title zoomIn animated"></div>
+                    <div class="banner zoomIn animated"></div>
+                    <div class="use fadeIn animated">
+                        <a></a>
+                        <div class="HMZ_light">
+                            <p class="HMZ_nth1"></p>
+                            <p class="HMZ_nth2"></p>
+                            <p class="HMZ_nth3"></p>
+                            <p class="HMZ_nth4"></p>
+                        </div>
+                    </div>
+                    <div class="li fadeIn animated"></div>
+                    <div id="oWSBtn" class="fadeIn animated">
+                       <div class="HMZ_light">
+                           <p class="HMZ_nth1"></p>
+                           <p class="HMZ_nth2"></p>
+                           <p class="HMZ_nth3"></p>
+                           <p class="HMZ_nth4"></p>
+                       </div>
+                    </div>
+                </div>
+                <div class="error hid">
+                    <div class="banner zoomIn animated"></div>
+                    <div class="li fadeIn animated"></div>
+                    <div id="oWRBtn" class="fadeIn animated">
+                        <div class="HMZ_light">
+                            <p class="HMZ_nth1"></p>
+                            <p class="HMZ_nth2"></p>
+                            <p class="HMZ_nth3"></p>
+                            <p class="HMZ_nth4"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="DM" class="hid">
+            <img src="img/DM2.png"/>
+            <p id="DMBtn"></p>
+        </div>
+    </div>
+</div>
+<div class="landscape" id="landscape"></div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/logintemplate.js"></script>
+<script>
+    if(meitu===true) {
+        $('.video').html('<video id="video" src="src/tvc.mp4" poster="images/TVC.jpg" preload="auto" webkit-playsinline playsinline><source src="src/tvc.mp4" type="video/mp4"></video>');
+    }
+    if(!!media && media==1) {
+        $('.cover').css('display', 'none');
+        $('.cover').remove();
+        $('.load_btn').addClass('box2_b');
+    } else {
+        $('.cover').css('display', 'block');
+    }
+</script>
+<script src="js/scrollTouch.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/createJS.js"></script>
+<script src="js/index.js?v=29"></script>
+<script src="js/HMZ_main.js?v=42"></script>
+</body>
+</html>
