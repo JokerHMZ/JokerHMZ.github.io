@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=640,user-scalable=no,target-densitydpi=320">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>蒙牛优益C LC-37乳酸菌</title>
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/main.css?v=14">
+    <script src="//ntbm-cd-web-cs.chinacloudapp.cn/bundle/beacon"></script>
+</head>
+<body>
+<audio src="../src/11.mp3" loop id="myAudio"></audio>
+<div id="videof">
+    <video id="video1" preload="auto" src="../src/1.mp4" controls="controls"></video>
+</div>
+<div>
+    <div id="bgPao1"></div>
+    <div id="bgPao2"></div>
+    <div id="logo">
+        <img src="../img/logo.png">
+    </div>
+    <div id="bottomPageText"></div>
+    <div id="music" class="music_rotate"></div>
+    <div id="container">
+        <canvas id="bg" width="640" height="950"></canvas>
+        <canvas id="fg" width="640" height="950"></canvas>
+        <canvas id="bottle"></canvas>
+        <div id="net" class="net_rotate"></div>
+        <div id="page1" class="now">
+            <div class="text1 text animatedHMZ"></div>
+            <div class="text2 text animatedHMZ"></div>
+            <div class="text3 text animatedHMZ"></div>
+        </div>
+        <div id="page2">
+            <div class="text0 heightHMZ"></div>
+            <div class="text1 text animatedHMZ">
+            </div>
+        </div>
+        <div id="page3">
+            <div class="text0 heightHMZ"></div>
+            <div class="text1 text animatedHMZ"></div>
+            <div class="text2 text animatedHMZ"></div>
+            <div class="text3 text animatedHMZ"></div>
+        </div>
+        <div id="page4">
+            <div class="text0 heightHMZ"></div>
+            <div class="text1 text animatedHMZ"></div>
+            <div class="text2 text animatedHMZ"></div>
+            <div class="text3 text animatedHMZ"></div>
+        </div>
+        <div id="page5">
+            <div class="text0 heightHMZ"></div>
+            <div class="text1 text animatedHMZ"></div>
+            <div class="text2 text animatedHMZ"></div>
+            <div class="text3 text animatedHMZ"></div>
+        </div>
+        <div id="page6">
+            <div class="text1 text animatedHMZ"></div>
+            <div class="text2 text animatedHMZ"></div>
+            <div class="text3 text animatedHMZ"></div>
+        </div>
+        <div id="btnS">
+            <div class="btn2"></div>
+            <div class="btn3"></div>
+            <div class="btn4"></div>
+            <div class="btn5"></div>
+            <div class="btn6">
+                <!--<a href="https://evt.dianping.com/midas/1activities/a8220nyyblse9c4jt/index.html?utm_source=o_weixin" target="_self"></a>-->
+            </div>
+        </div>
+    </div>
+    <div id="guide_fixed">
+        <p class="handTxt"></p>
+        <div class="hand"></div>
+    </div>
+    <div id="guide" class="hidhid">
+        <div class="circle" data-i="1">
+            <div class="now "></div>
+            <div class="pass"></div>
+        </div>
+        <div class="line"></div>
+        <div class="circle" data-i="2">
+            <div class="now "></div>
+            <div class="pass"></div>
+        </div>
+        <div class="line"></div>
+        <div class="circle" data-i="3">
+            <div class="now"></div>
+            <div class="pass"></div>
+        </div>
+        <div class="line"></div>
+        <div class="circle" data-i="4">
+            <div class="now"></div>
+            <div class="pass"></div>
+        </div>
+        <div class="line"></div>
+        <div class="circle" data-i="5">
+            <div class="now"></div>
+            <div class="pass"></div>
+        </div>
+        <div class="line"></div>
+        <div class="circle" data-i="6">
+            <div class="now"></div>
+            <div class="pass"></div>
+        </div>
+    </div>
+    <div id="ceng1" class="ceng opacity">
+        <div class="closeBtn"></div>
+    </div>
+    <div id="ceng2" class="ceng opacity">
+        <div class="closeBtn"></div>
+    </div>
+    <div id="ceng3" class="ceng opacity">
+        <div class="closeBtn"></div>
+    </div>
+    <div id="loading">
+        <div class="bottles hid">
+            <div data-i="0">
+                <img src="../img/bubble2.png">
+            </div>
+            <div data-i="1">
+                <img src="../img/bubble2.png">
+            </div>
+            <div data-i="2">
+                <img src="../img/bubble2.png">
+            </div>
+            <div data-i="3">
+                <img src="../img/bubble.png">
+            </div>
+            <div data-i="4">
+                <img src="../img/bubble.png">
+            </div>
+            <div data-i="5">
+                <img src="../img/bubble2.png">
+            </div>
+            <div data-i="6">
+                <img src="../img/bubble2.png">
+            </div>
+            <div data-i="7">
+                <img src="../img/bubble.png">
+            </div>
+            <div data-i="8">
+                <img src="../img/bubble.png">
+            </div>
+            <div data-i="9">
+                <img src="../img/bubble2.png">
+            </div>
+        </div>
+        <div class="loading_bottle hid"></div>
+        <div class="txt">
+            <span class="num">0</span>
+            <span class="percent">%</span>
+        </div>
+    </div>
+    <div id="shadow" class="shadow0"></div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/jquery.touchSwipe.min.js"></script>
+<script src="../js/three.min.js"></script>
+<script src="../js/ColladaLoader.js"></script>
+<script src="../js/tween.min.js"></script>
+<script src="../js/preloadjs-0.6.2.min.js"></script>
+<script src="../js/main.js?v=19"></script>
+</body>
+</html>
