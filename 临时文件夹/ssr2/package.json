@@ -1,0 +1,71 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node ./build/app.js",
+    "build:dev": "cross-env NODE_ENV=production gulp",
+    "webpackdev": "better-npm-run webpack:dev",
+    "webpackprod": "better-npm-run webpack:prod"
+  },
+  "betterScripts": {
+    "webpack:dev": {
+      "command": "webpack --progress --colors",
+      "env": {
+        "NODE_ENV": "dev"
+      }
+    },
+    "webpack:prod": {
+      "command": "webpack --progress --colors",
+      "env": {
+        "NODE_ENV": "prod"
+      }
+    }
+  },
+  "author": "jokerZ",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.5",
+
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-env": "^1.7.0",
+    "cheerio": "^1.0.0-rc.2",
+    "css-loader": "^1.0.1",
+    "cssnano": "^4.1.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-prepack": "0.0.3",
+    "gulp-watch": "^5.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss": "^7.0.5",
+    "postcss-css-variables": "^0.11.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^3.1.2",
+    "style-loader": "^0.23.1",
+    "supervisor": "^0.12.0",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "co": "^4.6.0",
+    "cross-env": "^5.2.0",
+    "gulp": "^3.9.1",
+    "koa": "^2.6.1",
+    "koa-simple-router": "^0.2.0",
+    "koa-static": "^5.0.0",
+    "koa-swig": "^2.2.1",
+    "lodash": "^4.17.11",
+    "log4js": "^3.0.6",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

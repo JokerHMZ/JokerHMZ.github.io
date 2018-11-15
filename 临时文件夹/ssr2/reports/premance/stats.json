@@ -1,0 +1,514 @@
+{
+  "errors": [],
+  "warnings": [
+    "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/"
+  ],
+  "version": "4.19.1",
+  "hash": "0d75673b9fce95048e48",
+  "time": 480,
+  "builtAt": 1541758515481,
+  "publicPath": "/",
+  "outputPath": "D:\\nodeserver\\ssr\\build\\",
+  "assetsByChunkName": {
+    "index-index": "assets/scripts/index-index.bundle.js"
+  },
+  "assets": [
+    {
+      "name": "assets/scripts/index-index.bundle.js",
+      "size": 1689,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "index-index"
+      ],
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "index-index": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "assets/scripts/index-index.bundle.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "index-index": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "assets/scripts/index-index.bundle.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 1757,
+      "names": [
+        "index-index"
+      ],
+      "files": [
+        "assets/scripts/index-index.bundle.js"
+      ],
+      "hash": "de10eb5f23205c316ef6",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js 80c10f5bc599dcd620c5d253d4e825d2",
+          "name": "./src/web/views/index/index-index.entry.js + 2 modules",
+          "index": 0,
+          "index2": 2,
+          "size": 1757,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "loc": "index-index"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": 0,
+          "modules": [
+            {
+              "id": null,
+              "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "name": "./src/web/views/index/index-index.entry.js",
+              "index": 0,
+              "index2": 2,
+              "size": 133,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [],
+              "issuer": null,
+              "issuerId": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "profile": {
+                "factory": 30,
+                "building": 282
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "type": "single entry",
+                  "userRequest": "D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "loc": "index-index"
+                }
+              ],
+              "usedExports": true,
+              "providedExports": [],
+              "optimizationBailout": [
+                "ModuleConcatenation bailout: Module is an entry point"
+              ],
+              "depth": 0,
+              "source": "import Footer from '../../widget/footer/footer.js';\nFooter.init();\nimport Header from '../../widget/header/header.js';\nHeader.init();"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\widget\\footer\\footer.js",
+              "name": "./src/web/widget/footer/footer.js",
+              "index": 1,
+              "index2": 0,
+              "size": 1501,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [],
+              "issuer": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "issuerId": null,
+              "issuerName": "./src/web/views/index/index-index.entry.js",
+              "issuerPath": [
+                {
+                  "id": null,
+                  "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "name": "./src/web/views/index/index-index.entry.js",
+                  "profile": {
+                    "factory": 30,
+                    "building": 282
+                  }
+                }
+              ],
+              "profile": {
+                "factory": 2,
+                "building": 94
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "module": "./src/web/views/index/index-index.entry.js",
+                  "moduleName": "./src/web/views/index/index-index.entry.js",
+                  "type": "harmony side effect evaluation",
+                  "userRequest": "../../widget/footer/footer.js",
+                  "loc": "1:0-51"
+                },
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "module": "./src/web/views/index/index-index.entry.js",
+                  "moduleName": "./src/web/views/index/index-index.entry.js",
+                  "type": "harmony import specifier",
+                  "userRequest": "../../widget/footer/footer.js",
+                  "loc": "2:0-6"
+                }
+              ],
+              "usedExports": [
+                "default"
+              ],
+              "providedExports": [
+                "default"
+              ],
+              "optimizationBailout": [],
+              "depth": 1,
+              "source": "function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n// require('footer.css');\nvar Footer = {\n  init: function () {\n    var _init = _asyncToGenerator(\n    /*#__PURE__*/\n    regeneratorRuntime.mark(function _callee() {\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return new Promise(function (resolve) {\n                setTimeout(function () {\n                  console.log('测试es6');\n                }, 1000);\n              });\n\n            case 2:\n              console.log('Footer');\n\n            case 3:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee, this);\n    }));\n\n    return function init() {\n      return _init.apply(this, arguments);\n    };\n  }()\n};\nexport default Footer;"
+            },
+            {
+              "id": null,
+              "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\widget\\header\\header.js",
+              "name": "./src/web/widget/header/header.js",
+              "index": 2,
+              "index2": 1,
+              "size": 123,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [],
+              "issuer": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "issuerId": null,
+              "issuerName": "./src/web/views/index/index-index.entry.js",
+              "issuerPath": [
+                {
+                  "id": null,
+                  "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "name": "./src/web/views/index/index-index.entry.js",
+                  "profile": {
+                    "factory": 30,
+                    "building": 282
+                  }
+                }
+              ],
+              "profile": {
+                "factory": 2,
+                "building": 94
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "module": "./src/web/views/index/index-index.entry.js",
+                  "moduleName": "./src/web/views/index/index-index.entry.js",
+                  "type": "harmony side effect evaluation",
+                  "userRequest": "../../widget/header/header.js",
+                  "loc": "3:0-51"
+                },
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+                  "module": "./src/web/views/index/index-index.entry.js",
+                  "moduleName": "./src/web/views/index/index-index.entry.js",
+                  "type": "harmony import specifier",
+                  "userRequest": "../../widget/header/header.js",
+                  "loc": "4:0-6"
+                }
+              ],
+              "usedExports": [
+                "default"
+              ],
+              "providedExports": [
+                "default"
+              ],
+              "optimizationBailout": [],
+              "depth": 1,
+              "source": "// require('header.css');\nvar Header = {\n  init: function init() {\n    console.log('Header');\n  }\n};\nexport default Header;"
+            }
+          ],
+          "filteredModules": 0
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "index-index",
+          "request": "D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js 80c10f5bc599dcd620c5d253d4e825d2",
+      "name": "./src/web/views/index/index-index.entry.js + 2 modules",
+      "index": 0,
+      "index2": 2,
+      "size": 1757,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+          "loc": "index-index"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": 0,
+      "modules": [
+        {
+          "id": null,
+          "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+          "name": "./src/web/views/index/index-index.entry.js",
+          "index": 0,
+          "index2": 2,
+          "size": 133,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 30,
+            "building": 282
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "loc": "index-index"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [],
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is an entry point"
+          ],
+          "depth": 0,
+          "source": "import Footer from '../../widget/footer/footer.js';\nFooter.init();\nimport Header from '../../widget/header/header.js';\nHeader.init();"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\widget\\footer\\footer.js",
+          "name": "./src/web/widget/footer/footer.js",
+          "index": 1,
+          "index2": 0,
+          "size": 1501,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+          "issuerId": null,
+          "issuerName": "./src/web/views/index/index-index.entry.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "name": "./src/web/views/index/index-index.entry.js",
+              "profile": {
+                "factory": 30,
+                "building": 282
+              }
+            }
+          ],
+          "profile": {
+            "factory": 2,
+            "building": 94
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "module": "./src/web/views/index/index-index.entry.js",
+              "moduleName": "./src/web/views/index/index-index.entry.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "../../widget/footer/footer.js",
+              "loc": "1:0-51"
+            },
+            {
+              "moduleId": null,
+              "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "module": "./src/web/views/index/index-index.entry.js",
+              "moduleName": "./src/web/views/index/index-index.entry.js",
+              "type": "harmony import specifier",
+              "userRequest": "../../widget/footer/footer.js",
+              "loc": "2:0-6"
+            }
+          ],
+          "usedExports": [
+            "default"
+          ],
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n// require('footer.css');\nvar Footer = {\n  init: function () {\n    var _init = _asyncToGenerator(\n    /*#__PURE__*/\n    regeneratorRuntime.mark(function _callee() {\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              _context.next = 2;\n              return new Promise(function (resolve) {\n                setTimeout(function () {\n                  console.log('测试es6');\n                }, 1000);\n              });\n\n            case 2:\n              console.log('Footer');\n\n            case 3:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee, this);\n    }));\n\n    return function init() {\n      return _init.apply(this, arguments);\n    };\n  }()\n};\nexport default Footer;"
+        },
+        {
+          "id": null,
+          "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\widget\\header\\header.js",
+          "name": "./src/web/widget/header/header.js",
+          "index": 2,
+          "index2": 1,
+          "size": 123,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [],
+          "issuer": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+          "issuerId": null,
+          "issuerName": "./src/web/views/index/index-index.entry.js",
+          "issuerPath": [
+            {
+              "id": null,
+              "identifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "name": "./src/web/views/index/index-index.entry.js",
+              "profile": {
+                "factory": 30,
+                "building": 282
+              }
+            }
+          ],
+          "profile": {
+            "factory": 2,
+            "building": 94
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "module": "./src/web/views/index/index-index.entry.js",
+              "moduleName": "./src/web/views/index/index-index.entry.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "../../widget/header/header.js",
+              "loc": "3:0-51"
+            },
+            {
+              "moduleId": null,
+              "moduleIdentifier": "D:\\nodeserver\\ssr\\node_modules\\babel-loader\\lib\\index.js??ref--4!D:\\nodeserver\\ssr\\src\\web\\views\\index\\index-index.entry.js",
+              "module": "./src/web/views/index/index-index.entry.js",
+              "moduleName": "./src/web/views/index/index-index.entry.js",
+              "type": "harmony import specifier",
+              "userRequest": "../../widget/header/header.js",
+              "loc": "4:0-6"
+            }
+          ],
+          "usedExports": [
+            "default"
+          ],
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "// require('header.css');\nvar Header = {\n  init: function init() {\n    console.log('Header');\n  }\n};\nexport default Header;"
+        }
+      ],
+      "filteredModules": 0
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}
