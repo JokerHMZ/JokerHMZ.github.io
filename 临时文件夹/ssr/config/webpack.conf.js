@@ -24,28 +24,28 @@ fs.readdirSync(pagePath).map((o,index)=>{
 const _entries=Object.assign(jsEntris);
 const _module = {
     rules : [
-        // {
-        //     test: /\.css$/,
-        //     loader: ExtractTextPlugin.extract({
-        //         fallback: 'style-loader',
-        //         use: [
-        //             {
-        //                 loader:'css-loader'
-        //             },{
-        //                 loader:'postcss-loader',
-        //                 options:{}
-        //             }
-        //         ]
-        //     })
-        // },
+        {
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [ 'css-loader', 'postcss-loader' ]
+            })
+        },
         {
             test: /\.js$/,
             loader: 'babel-loader',
+            include: [path.join(__dirname,'./src'), path.join(__dirname,'./test')],
             options:{
-                presets:["@babel/preset-env",{
-                    modules:false
-                }]
-                // "plugins":['transfrom-runtime']
+                "presets": [
+                    ["env", {
+                        "modules": false,
+                        "targets": {
+                            "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+                        }
+                    }],
+                    "stage-2"
+                ],
+                "plugins": ["transform-runtime"]
             }
         }
     ]

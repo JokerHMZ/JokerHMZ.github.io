@@ -1,10 +1,10 @@
-{% extends '../../common/pages/layout.html' %}
+{% extends './layout.html' %}
 {% block styles %}
 {% endblock %}
 {% block content %}
-    {% include  '../../../widget/tools/tools.html' %}
-    {% include  '../../../widget/tools/tools2.html' %}
+    {% include  '../widget/header.html' %}
     <span>{{data}}</span>
+    {% include  '../widget/footer.html' %}
 {% endblock %}
 {% block scripts %}
 {% endblock %}

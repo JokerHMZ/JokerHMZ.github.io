@@ -36,7 +36,6 @@ htmlAfterWebpackPlugin.prototype.apply = function (compiler) {
 
             let isBase = data.outputName.includes('/layout.html');
 
-            console.log(result.css)
 
             if(!isBase){
                 _html=_html.replace('{% block styles %}',function () {

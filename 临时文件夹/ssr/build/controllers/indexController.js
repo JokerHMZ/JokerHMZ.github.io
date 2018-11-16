@@ -18,7 +18,7 @@ const indexController = {
       const _data = await indexModelIns.getData();
 
       ctx.body = await ctx.render('index', {
-        data: _data.toString()
+        data: JSON.stringify(_data)
       });
     };
   }

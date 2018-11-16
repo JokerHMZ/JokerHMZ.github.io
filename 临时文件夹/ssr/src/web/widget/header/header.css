@@ -1,16 +1,10 @@
-//.header{
-//    :root {
-//        --height:1em;
-//        --color:#123456
-//    }
-//    .header__con{
-//        height:var(--height);
-//        color:var(--color)
-//    }
-//}
+:root {
+    --height:1em;
+    --color:#123456
+}
 .header{
-    color: #f00;
-    height: 150px;
-    line-height: 150px;
-    text-align: center;
+    .header__con{
+        height:var(--height);
+        color:var(--color);
+    }
 }
