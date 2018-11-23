@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlAfterWebpackPlugin = require('./htmlAfterWebpackPlugin');
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const conf = require('./webpack.conf');
 const _options = {
     output:{
@@ -16,16 +15,32 @@ const _options = {
     },
     plugins:[
         new ExtractTextPlugin('styles/[name].bundle.css'),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev')
         }),
-        new VueSSRClientPlugin(),
         new HtmlWebpackPlugin({
-            filename: '../views/index.html ',
-            template: 'src/webapp/index.html',
+            filename: '../views/index.html',
+            template: 'src/web/views/index/pages/index.html',
             inject: false
-        })
+        }),
+        new HtmlWebpackPlugin({
+            filename: '../views/layout.html',
+            template: 'src/web/views/common/pages/layout.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: '../widget/footer.html',
+            template: 'src/web/widget/footer/footer.html',
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: '../widget/header.html',
+            template: 'src/web/widget/header/header.html',
+            inject: false
+        }),
+        new HtmlAfterWebpackPlugin({})
     ]
 }
 const options = Object.assign(conf.dev,_options)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0;">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>App</title>
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                s = w / 750;
+            document.getElementById('viewport').content = 'width=750,initial-scale=' + s + ',minimum-scale=' + s +
+                ',maximum-scale=' + s + ',user-scalable=no';
+            //safari中禁止双指缩放
+            document.addEventListener('gesturestart', function (event) {
+                event.preventDefault();
+            });
+            //禁止safari中双击放大
+            var lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                var now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+                event.preventDefault();
+            }, false);
+            //取消touchmove默认行为，ios中body上还需加上 style="position: fixed"
+            document.addEventListener('touchmove', function (event) {
+                event.preventDefault();
+                return false;
+            });
+        })();
+    </script>
+</head>
+<body>
+    <!--vue-ssr-outlet-->
+</body>
+</html>

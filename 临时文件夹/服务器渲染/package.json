@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client:dev": "cross-env NODE_ENV=development webpack --config ./config/webpack.dev.js --progress --colors",
-    "client:prod": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js --progress --hide-modules",
-    "client:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.js --progress --hide-modules"
+    "start": "cross-env NODE_ENV=development node ./build/app.js",
+    "build:dev": "cross-env NODE_ENV=production gulp",
+    "webpackdev": "better-npm-run webpack:dev",
+    "webpackprod": "better-npm-run webpack:prod"
   },
   "betterScripts": {
     "webpack:dev": {
@@ -44,7 +45,7 @@
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
     "style-loader": "^0.23.1",
-    "vue-loader": "^15.4.2",
+    "supervisor": "^0.12.0",
     "webpack": "^3.5.5"
   },
   "dependencies": {
@@ -58,8 +59,6 @@
     "lodash": "^4.17.11",
     "log4js": "^3.0.6",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "vue": "^2.5.17",
-    "vue-server-renderer": "^2.5.17"
+    "request-promise": "^4.2.2"
   }
 }
