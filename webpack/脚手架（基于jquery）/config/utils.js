@@ -95,7 +95,7 @@ exports.getLocalIp= function () {
         if(ip!='127.0.0.1'){break}
         ifaces[dev].forEach(function(details){
             if (details.family=='IPv4') {
-                if(dev=='本地连接'){
+                if(dev.indexOf('本地连接')>-1){
                     ip=details.address;
                 }
             }
