@@ -1,0 +1,11 @@
+{% extends './layout.html' %}
+{% block styles %}<link href="/styles/index-index.bundle.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    {% include  '../widget/header.html' %}
+    <span>{{data}}</span>
+    {% include  '../widget/footer.html' %}
+{% endblock %}
+{% block scripts %}<script src="/scripts/index-index.bundle.js"></script>
+{% endblock %}
+

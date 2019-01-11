@@ -15,14 +15,15 @@ const controllerInit = {
     app.use(router(_ => {
       _.get('/', _indexController2.default.index());
 
-      _.get('/index', _indexController2.default.index());
+      _.get('/about', _indexController2.default.index());
 
-      _.get('/index.html', _indexController2.default.index()); // _.get('/about', index.index());
-      // _.get('/counter', index.index());
-      // _.get('/topics/:id', index.index());
-      // _.get('/test', index.index());
-      // _.get('/index/getdata', index.getData());
+      _.get('/counter', _indexController2.default.index());
 
+      _.get('/topics/:id', _indexController2.default.index());
+
+      _.get('/test', _indexController2.default.index());
+
+      _.get('/index/getdata', _indexController2.default.getData());
     }));
   }
 

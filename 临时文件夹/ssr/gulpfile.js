@@ -4,7 +4,6 @@ const watch = require('gulp-watch');
 const prepack = require('gulp-prepack');
 // const rollup = require('gulp-rollup');
 // const phantomcss = require('gulp-phantomcss');
-console.log('状态', process.env.NODE_ENV);
 gulp.task('builddev', () => {
     //开发环境
     return watch('./src/nodeuii/**/*.js', {

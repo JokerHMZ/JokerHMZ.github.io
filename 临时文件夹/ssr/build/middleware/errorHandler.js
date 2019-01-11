@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 const errorHandler = {
-  error(app) {
+  error(app, logger) {
     //vue ssr  集中到整个类里
     //500
     app.use(async (ctx, next) => {
       try {
         await next();
       } catch (err) {
-        console.log('errcode', err);
+        logger.error(err);
         ctx.status = err.status || 500;
         ctx.body = "500";
       }

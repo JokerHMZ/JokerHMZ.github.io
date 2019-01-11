@@ -18,8 +18,11 @@ exports.cssLoaders = function (options) {
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
+
       sourceMap: options.sourceMap,
         plugins: [
+            require('postcss-cssnext'),
+            require('postcss-nested'),
             require('autoprefixer')({
                 "browsers": [
                     "> 1%",
@@ -95,7 +98,7 @@ exports.getLocalIp= function () {
         if(ip!='127.0.0.1'){break}
         ifaces[dev].forEach(function(details){
             if (details.family=='IPv4') {
-                if(dev=='本地连接'){
+                if(dev.indexOf('本地连接')>-1){
                     ip=details.address;
                 }
             }
