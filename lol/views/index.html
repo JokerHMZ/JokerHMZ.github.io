@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="pragma" content="no-catch"/>
+    <title>内战分组</title>
+    <script>
+        (function() {
+            var w = screen.width, s = w/750;
+            document.getElementById('viewport').content = 'width=750,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+        function isPassive() {
+            var supportsPassiveOption = false;
+            try {
+                addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                    get: function () {
+                        supportsPassiveOption = true;
+                    }
+                }));
+            } catch(e) {}
+            return supportsPassiveOption;
+        }
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+            return false;
+        }, isPassive() ? {
+            capture: false,
+            passive: false
+        } : false);
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (!!r) {
+                return (r[2]);
+            } else {
+                return null;
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+   <div class="app">
+       <div class="name-box hide">
+           <div class="name">请输入参战人员昵称：</div>
+           <div class="input-box">
+               <input type="text"  id="inputName">
+           </div>
+           <div class="find">
+               <button id="findBtn">加入队伍</button>
+           </div>
+           <hr>
+       </div>
+       <div class="group">
+           <div class="group_item groupA">
+               <div class="title">A组成员</div>
+               <lu class="group_item_list" id="groupA">
+               </lu>
+           </div>
+           <div class="group_item groupB">
+               <div class="title">B组成员</div>
+               <lu class="group_item_list" id="groupB">
+               </lu>
+           </div>
+       </div>
+   </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

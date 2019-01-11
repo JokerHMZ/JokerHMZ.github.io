@@ -1,0 +1,83 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,h5,h6,div,p,dl,dt,dd,ol,ul,li,form,table,th,td,a,img,span,strong,var,em,input,textarea,select,option{margin: 0; padding: 0;}
+html,body{font-family:"Microsoft YaHei","微软雅黑","宋体",Arail,Tabhoma,serif; font-size: 16px; text-align: left;}
+ul,ol{list-style: none;}
+img{border: 0;}
+input,select,textarea{outline:0;}
+textarea{resize:none;}
+table{border-collapse: collapse; border-spacing: 0;}
+th,strong,var,em{font-weight: normal; font-style: normal;}
+a{text-decoration: none;}
+a:link,a:visited,a:hover,a:active{text-decoration:none;}
+a:focus{outline:none;}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.hide{
+    display: none;
+}
+
+.app{
+    box-sizing: border-box;
+    height: 100%;
+    background: #eee;
+    padding: 20px 10px 0;
+}
+.name{
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.input-box{
+    width: 80%;
+}
+.input-box input{
+    width: 100%;
+    height: 60px;
+    font-size: 35px;
+    line-height: 60px;
+    border:2px #333 solid;
+    outline: none;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.find{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.find button{
+    width: 500px;
+    height: 100px;
+    background: burlywood;
+    font-size: 60px;
+    line-height: 100px;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.group{
+    margin-top: 20px;
+    height: 700px;
+    overflow: hidden;
+}
+.group_item{
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+.group_item .title{
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+.group_item_list li{
+    font-size: 35px;
+    height: 70px;
+    line-height: 70px;
+}
