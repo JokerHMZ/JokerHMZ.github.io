@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="pragma" content="no-catch"/>
+    <title>匠心年夜饭</title>
+    <script>
+      (function() {
+        var w = screen.width, s = w/750;
+        document.getElementById('viewport').content = 'width=750,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+      })();
+      function isPassive() {
+        var supportsPassiveOption = false;
+        try {
+          addEventListener("test", null, Object.defineProperty({}, 'passive', {
+            get: function () {
+              supportsPassiveOption = true;
+            }
+          }));
+        } catch(e) {}
+        return supportsPassiveOption;
+      }
+      document.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+        return false;
+      }, isPassive() ? {
+        capture: false,
+        passive: false
+      } : false);
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?9af3a45f980c89d8ade283f2585c9875";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="./static/js/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
