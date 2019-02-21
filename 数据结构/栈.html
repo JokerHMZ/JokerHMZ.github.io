@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栈</title>
+</head>
+<body>
+<script>
+    function Stack(arr) {
+        this.dataStore=arr|| [];
+    }
+    Stack.prototype={
+        constructor:Stack,
+        push:function (elem) {
+            this.dataStore.push(elem)
+        },
+        pop:function () {
+            return this.dataStore.pop();
+        },
+        peek:function () {//返回栈顶元素
+            return this.dataStore[this.dataStore.length-1]
+        },
+        clear:function () {
+            this.dataStore.length=0
+        },
+        length:function () {
+            return this.dataStore.length;
+        },
+        reverse:function () {
+            this.dataStore.reverse()
+        }
+    };
+
+</script>
+</body>
+</html>

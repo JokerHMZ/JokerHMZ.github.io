@@ -1,0 +1,113 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+nav ul {
+    list-style:none;
+}
+body {
+    font-family: "微软雅黑",Arial,"黑体","宋体",sans-serif;
+    line-height: 1;
+}
+:focus {
+    outline: 0;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+del {
+    text-decoration: line-through;
+}
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+a {
+    background:transparent;
+    text-decoration:none;
+    -webkit-user-select:none;
+}
+a,a:link,a:visited,a:hover,a:active{ 
+    color:inherit;
+}
+input, select {
+    vertical-align:middle;
+}
+textarea{
+    resize:none;
+    overflow:auto;
+}
+@media (min-width: 1024px){
+    html{font-size: 18px}
+}
+@media (min-width: 1100px) {
+    html{font-size: 20px}
+}
+@media (min-width: 1280px) {
+    html{font-size: 22px;}
+}
+@media (min-width: 1366px) {
+    html{font-size: 24px;}
+}
+@media (min-width: 1440px) {
+    html{font-size: 25px;}
+}
+@media (min-width: 1680px) {
+    html{font-size: 28px;}
+}
+@media (min-width: 1920px) {
+    html{font-size: 33px;}
+}

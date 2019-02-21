@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+</head>
+<body>
+<script>
+    function List() {
+        this.listSize = 0;
+        this.pos = 0;
+        this.dataStore= [];
+    }
+    List.prototype={
+        constructor:List,
+        append:function (element) {
+            this.dataStore[this.listSize++]=element
+        },
+        find:function (element) {
+            for(var i=0;i<this.dataStore.length;i++){
+                if(this.dataStore[i]==element){
+                    return i
+                }
+            }
+            return -1;
+        },
+        remove:function (element) {
+            var foundAt=this.find(element);
+            if(foundAt>-1){
+                this.dataStore.slice(foundAt,1);
+                --this.listSize;
+                return
+            }
+            return false
+        },
+        length:function () {
+            return this.listSize
+        },
+        toString:function (divide) {
+            if((!!divide)&&(divide!=='')){
+                divide=','
+            }
+            return this.dataStore.join(divide)
+        },
+        insert:function (element,after) {
+            var insertPos=this.find(after);
+            if(insertPos>-1){
+                this.dataStore.splice(insertPos+1,0,element);
+                ++this.listSize;
+                return true
+            }
+            return false
+        },
+        clear:function () {
+            delete this.dataStore;
+            this.dataStore=[];
+            this.listSize = this.pos = 0;
+        },
+        front:function () {
+            this.pos=0
+        },
+        end:function () {
+            this.pos=this.listSize-1
+        },
+        prev:function () {
+            if(this.pos>0){
+                --this.pos
+            }
+        },
+        next:function () {
+            if(this.pos<this.listSize){
+                this.pos++;
+            }
+        },
+        currPos:function () {
+            return this.pos;
+        },
+        moveTo:function (position) {
+            this.pos=position;
+        },
+        getElement:function () {
+            return this.dataStore[this.pos]
+        }
+    };
+</script>
+</body>
+</html>

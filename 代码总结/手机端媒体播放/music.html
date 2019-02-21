@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=640,user-scalable=no,target-densitydpi=320">
+	<title>music</title>
+	<style>
+	/*=========================Reset_start==========================*/
+	body,h1,h2,h3,h4,h5,h6,div,p,dl,dt,dd,ol,ul,li,form,table,th,td,a,img,span,strong,var,em,input,textarea,select,option{margin: 0; padding: 0;border:0;}
+	html,body{font-family:'Microsoft YaHei',"微软雅黑","黑体","Helvetica Neue","宋体",Arail,Tabhoma;overflow: hidden;}
+	ul,ol{list-style: none;}
+	img{border: 0;}
+	input,select{outline:0;}
+	th,strong,var,em{font-weight: normal; font-style: normal;}
+	a{text-decoration: none;}
+	/*=========================Reset_end==========================*/
+	html, body{
+	    position: relative;
+	    width: 100%; 
+	    height: 100%; 
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    background-color: #666;
+
+	}
+	#myaudio{
+		width: 0;
+		height: 0;
+		position:absolute;
+		top:-1px;
+		left: -1px;
+	}
+
+	.music_btn{
+		position: absolute;
+		background-size: cover;
+		z-index: 100;
+		width:46px;
+		height:46px;
+		top:33px;
+		right:41px;
+		background-image: url(img/music_btn.png);
+		background-position: 0 46px;
+		z-index: 201;
+	}
+	.music_btn_on{
+		background-position: 0 0;
+	    animation: music_rot 5s linear infinite;
+	    -webkit-animation: music_rot 5s linear infinite;
+	}
+	@-webkit-keyframes music_rot{
+	    0%{
+	        -webkit-transform:rotate(0deg);
+	    }
+	    100%{
+	        -webkit-transform:rotate(360deg);
+	    }
+	}
+	@keyframes music_rot{
+	    0%{
+	        transform:rotate(0deg);
+	    }
+	    100%{
+	        transform:rotate(360deg);
+	    }
+	}
+	.music_touch_btn{
+		width: 120px;
+		height: 120px;
+		top:0;
+		right:0;
+		position: absolute;
+		z-index: 202;
+	}
+	</style>
+</head>
+<body>
+	<audio src="src/1.mp3" id="myaudio"></audio>
+	<!-- 播放按钮 -->
+	<div class="music_btn"></div>
+	<div class="music_touch_btn"></div>
+</body>
+	<script src="jquery-2.1.1.min.js"></script>
+	<script>
+		// 判断微信
+/*		function is_weixin(){
+			var ua = navigator.userAgent.toLowerCase();
+			if(ua.match(/MicroMessenger/i)=="micromessenger") {
+				return true;
+		 	} else {
+				return false;
+			}
+		}
+		var isWeiXin=is_weixin();*/
+		// 预加载
+		var myaudio=$('#myaudio')[0];
+		myaudio.play();
+		document.addEventListener("WeixinJSBridgeReady", function () {
+		    myaudio.play();
+			myaudio.pause();
+		}, false);
+		myaudio.pause();
+		//自动播放
+/*		if(isWeiXin){
+			myaudio.play();
+			document.addEventListener("WeixinJSBridgeReady", function () {
+			        myaudio.play();
+			}, false);
+		}else{
+			myaudio.pause();
+			$('.music_btn').removeClass('music_btn_on');
+		}
+*/
+		myaudio.play();
+		document.addEventListener("WeixinJSBridgeReady", function () {
+		        myaudio.play();
+		}, false);
+
+		myaudio.addEventListener("playing", function(){
+		    $('.music_btn').addClass('music_btn_on');
+		});
+		//播放按钮
+		$('.music_touch_btn').on('touchstart',function(){
+			if($('.music_btn').hasClass('music_btn_on')){
+				myaudio.pause();
+				$('.music_btn').removeClass('music_btn_on');
+			}else{
+				myaudio.play();
+				$('.music_btn').addClass('music_btn_on');
+			}
+		});
+	</script>
+</html>

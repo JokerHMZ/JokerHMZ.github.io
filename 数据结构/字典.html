@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字典</title>
+</head>
+<body>
+<script>
+    function Dictionary(elements) {
+        this.dataStore={}
+    }
+    Dictionary.prototype={
+        constructor:Dictionary,
+        add:function (key,value) {
+            this.dataStore[key]=value
+        },
+        find:function (key) {
+            return this.dataStore[key]
+        },
+        remove:function (key) {
+            delete this.dataStore[key]
+        },
+        showAll:function () {
+            for(var key in this.dataStore){
+                console.log(key,this.dataStore[key])
+            }
+        },
+        length:function () {
+            return Object.keys(this.dataStore).length
+        },
+        clear:function () {
+            delete this.dataStore;
+            this.dataStore={};
+        }
+    }
+</script>
+</body>
+</html>

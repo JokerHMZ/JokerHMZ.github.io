@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 150px;
+            transition: all 0.3s ease-in-out;
+        }
+        .m{
+            height: 50px;
+            background: red;
+        }
+        .q1{
+            @-webkit-apply(.m)
+            @apply(.m)
+        }
+        .q2{
+            @-webkit-apply(.m)
+            @apply(.m)
+        }
+    </style>
+</head>
+<body>
+<div class="q1"></div>
+<div class="q2"></div>
+<img src="1.jpg" id="box">
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    function mirror(angle){
+        var k=Math.tan(angle*Math.PI/180),
+            a = (1-k*k)/(k*k+1),
+            b = 2*k/(k*k+1),
+            c = 2*k/(k*k+1),
+            d = (k*k-1)/(k*k+1),
+            e=0,
+            f=0;
+        return {
+            a:a,
+            b:b,
+            c:c,
+            d:d,
+            e:e,
+            f:f
+        }
+    }
+    $(document).on('click',function (){
+        var matrix=mirror(180);
+        $('#box').attr('style','transform: matrix('+matrix.a+','+matrix.b+','+matrix.c+','+matrix.d+','+matrix.e+','+matrix.f+');')
+    })
+</script>
+</body>
+</html>

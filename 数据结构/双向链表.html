@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向链表</title>
+</head>
+<body>
+<script>
+    function Node(elements) {
+        this.elements=elements;
+        this.next=null;
+        this.prev=null;
+    }
+    function DoubleLList() {
+        this.head=new Node('head')
+    }
+    DoubleLList.prototype={
+        constructor:DoubleLList,
+        find:function (item) {
+            var currNode=this.head;
+            while (currNode.elements!=item){
+                currNode=currNode.next
+            }
+            return currNode
+        },
+        insert:function (newElement,item) {
+            var node=new Node(newElement);
+            var currNode=this.find(item);
+            node.next=currNode.next;
+            node.prev=currNode ;
+            currNode.next=node;
+            if(!(node.next==null)){
+                node.next.prev=node
+            }
+        },
+        remove:function (item) {
+            var currNode=this.find(item);
+            if(!(currNode.next==null)){
+                currNode.prev.next=currNode.next;
+                currNode.next.prev=currNode.prev;
+                currNode.next=null;
+                currNode.prev=null;
+            }else{
+                currNode.prev.next=null;
+                currNode.prev=null;
+            }
+        },
+        display:function () {
+            var currNode=this.head;
+            var resule=[];
+            while (currNode.next!=null){
+                resule.push(currNode.next.elements);
+                currNode=currNode.next
+            }
+            return resule;
+        }
+    }
+    
+    var l=new  DoubleLList();
+    l.insert('first','head')
+    l.insert('second','first')
+    l.insert('third','second')
+    console.log(l.display())
+    l.remove('third')
+    console.log(l.display())
+</script>
+</body>
+</html>

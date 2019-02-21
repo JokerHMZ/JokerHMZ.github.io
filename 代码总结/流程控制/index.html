@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function _LazyMan(name){
+        var _this=this;
+        this.list=[];
+        this.i=0;
+        this.name=name;
+        this.list.push(fn);
+        setTimeout(function (){
+           _this.next();
+        },0);
+        function fn(){
+            console.log("Hi! This is "+_this.name+"!");
+            _this.i++;
+            _this.next();
+        }
+        return _this;
+    }
+    _LazyMan.prototype.next=function (){
+        var _this=this;
+        if(_this.i<_this.list.length){
+            _this.list[_this.i]();
+        }
+    };
+    _LazyMan.prototype.sleep=function (time){
+        var _this=this;
+        _this.list.push(fn);
+        function fn(){
+            setTimeout(function (){
+                console.log("Wake up after "+time+" hours!");
+                _this.i++;
+                _this.next();
+            },time*1000)
+        }
+        return _this;
+    };
+    _LazyMan.prototype.eat=function (food){
+        var _this=this;
+        _this.list.push(fn);
+        function fn(){
+            console.log("Eat "+food+"~");
+            _this.i++;
+            _this.next();
+        }
+        return _this;
+    };
+    _LazyMan.prototype.sleepFirst=function (time){
+        var _this=this;
+        _this.list.unshift(fn);
+        function fn(){
+            setTimeout(function (){
+                console.log("Wake up after "+time+" hours!");
+                _this.i++;
+                _this.next();
+            },time*1000)
+        }
+        return _this;
+    };
+    function LazyMan(name){
+        var man=new _LazyMan(name);
+        return man;
+    }
+    LazyMan("tom").eat("supper").sleep(5).eat("dinner").sleepFirst(5);
+</script>
+</body>
+</html>

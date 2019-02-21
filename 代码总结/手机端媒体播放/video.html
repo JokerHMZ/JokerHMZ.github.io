@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<script>
+	(function fnSetMeta() {
+		var w = screen.width,
+			s = w / 750;
+		document.getElementById('viewport').content = 'width=750,initial-scale=' + s + ',minimum-scale=' + s +
+			',maximum-scale=' + s + ',user-scalable=no';
+	})();
+</script>
+<title>video3</title>
+<style>
+	html, body{
+		padding: 0;
+	    width: 100%;
+	    background-color: #666;
+	}
+	.btn{
+		position: absolute;
+		z-index: 1;
+		top:0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		font-size: 40px;
+		background-color: yellow;
+	}
+	#video1{
+		width: 100%;
+		background-color: #000;
+		display: none;
+	}
+	video::-webkit-media-controls-enclosure {
+		display: none !important;
+	}
+</style>
+</head>
+<body>
+<!--<video id="video1" x5-playsinline="true" webkit-playsinline="true" playsinline="true"  x5-video-player-type='h5' x5-video-player-fullscreen='true' src="src/1.mp4"></video>-->
+<div style="width: 750px;height: 400px;overflow: hidden;z-index: -1">
+	<video id="video1" width="750" height="424" x5-playsinline="true" webkit-playsinline="true" playsinline="true">
+		<source src="src/1.mp4" type="video/mp4">
+	</video>
+</div>
+<div class="btn" id="btn">play</div>
+</body>
+<script src="vconsole.min.js"></script>
+<script src="jquery-2.1.1.min.js"></script>
+<script>
+	new VConsole();
+    var myVid=document.getElementById('video1');
+    var btn=document.getElementById('btn');
+    btn.addEventListener('click',function(e) {
+        setTimeout(function () {
+            myVid.play();
+            document.addEventListener("WeixinJSBridgeReady", function(){
+                myVid.play();
+            }, false);
+        },500);
+        $('#video1').fadeIn(500);
+    });
+    myVid.addEventListener('ended',function(){
+        $('#video1').fadeOut();
+    },false);
+
+    myVid.addEventListener('pause',function(){
+        $('#video1').fadeOut();
+    },false);
+</script>
+</html>

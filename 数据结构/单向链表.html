@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单向链表</title>
+</head>
+<body>
+<script>
+    function Node(elements) {
+        this.elements=elements;
+        this.next=null
+    }
+    function SingleLList() {
+        this.head=new Node('head')
+    }
+    SingleLList.prototype={
+        constructor:SingleLList,
+        find:function (item) {
+            var currNode=this.head;
+            while (currNode.elements!=item){
+                currNode=currNode.next
+            }
+            return currNode
+        },
+        insert:function (newElement,item) {
+            var node=new Node(newElement);
+            var currNode=this.find(item);
+            node.next=currNode.next;
+            currNode.next=node;
+        },
+        findPrev:function (item) {
+            var currNode=this.head;
+            while ((currNode.next!=null)&&(currNode.next.elements!=item)){
+                currNode=currNode.next;
+            }
+            return currNode;
+        },
+        remove:function (item) {
+            var preNode=this.findPrev(item);
+            var currNode=this.find(item);
+            if(preNode.next!=null){
+                preNode.next=currNode.next;
+                currNode.next=null;
+            }
+        },
+        display:function () {
+            var currNode=this.head;
+            var resule=[];
+            while (currNode.next!=null){
+                resule.push(currNode.next.elements);
+                currNode=currNode.next
+            }
+            return resule;
+        }
+    }
+    
+    var l=new  SingleLList();
+    l.insert('first','head')
+    l.insert('second','first')
+    l.insert('third','second')
+    console.log(l.display())
+    l.remove('second')
+    console.log(l.display())
+</script>
+</body>
+</html>

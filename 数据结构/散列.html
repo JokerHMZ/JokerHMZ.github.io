@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>散列</title>
+</head>
+<body>
+<script>
+
+
+    function Hash() {
+        this.table=new Array(137);
+    }
+    Hash.prototype={
+        constructor:Hash,
+        simpleHash:function (data) {
+            var H=31;
+            var total=0;
+            for(var i=0;i<data.length;i++){
+                total+=H*total+data.charCodeAt(i)
+            }
+            return total%this.table.length
+        },
+        showDistro:function () {
+            var arr=[];
+            this.table.join(' ').replace(/[\w\u4e00-\u9fa5`~\!@#\$%\^&\*\(\)-_\+=\{\}\[\];:"'\|\\<>,.\?\/、￥]+/g,function (match) {
+                arr.push(match);
+                return ''
+            })
+            return arr
+        },
+        put:function (key,value) {
+            var pos=this.simpleHash(key);
+
+            if(this.table[pos]==undefined){
+                this.table[pos]=[key,value];
+            }else{
+                while (this.table[pos]!=undefined){
+                    pos++
+                }
+                this.table[pos]=[key,value]
+            }
+
+            // var index=0;
+            // function putData() {
+            //     if(this.table[pos][index]==undefined){
+            //         this.table[pos][index]=data;
+            //         index++
+            //     }else{
+            //         index++;
+            //         putData()
+            //     }
+            // }
+            // putData()
+
+            // this.table[pos]=value;
+        },
+        get:function (key) {
+            var hash=this.simpleHash(key);
+            for(var i=hash;i<this.table.length;i++){
+                if(this.table[i][0]==key){
+                    return this.table[i][1]
+                }
+            }
+            return undefined
+
+
+            // return this.table[this.simpleHash(key)]
+        }
+    }
+
+    var h=new Hash();
+
+    h.put('china',112)
+     h.put('naich',265)
+     h.put('123','sdf')
+     h.put('456',4)
+     h.put('789','哈哈')
+     h.put('1032165','|')
+    console.log(h.showDistro())
+    console.log(h.get('china'))
+    console.log(h.get('naich'))
+    console.log(h.get('123'))
+    console.log(h.get('456'))
+    console.log(h.get('789'))
+    console.log(h.get('1032165'))
+</script>
+</body>
+</html>

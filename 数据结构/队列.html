@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>队列</title>
+</head>
+<body>
+<script>
+    function Queue(arr) {
+        this.dataStore=arr|| [];
+    }
+    Queue.prototype={
+        constructor:Queue,
+        push:function (elem) {
+            this.dataStore.push(elem)
+        },
+        shift:function () {
+            return this.dataStore.shift();
+        },
+        front:function () {//返回队首
+            return this.dataStore[0]
+        },
+        last:function () {//返回队尾
+            return this.dataStore[this.dataStore.length-1]
+        },
+        clear:function () {
+            this.dataStore.length=0
+        },
+        isEmpty:function () {
+            return this.dataStore.length===0
+        },
+        length:function () {
+            return this.dataStore.length;
+        },
+        reverse:function () {
+            this.dataStore.reverse()
+        },
+        toString:function (divide) {
+            if((!!divide)&&(divide!=='')){
+                divide=','
+            }
+            return this.dataStore.join(divide)
+        }
+    };
+</script>
+</body>
+</html>

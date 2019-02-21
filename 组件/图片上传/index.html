@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片</title>
+	<meta name="viewport" id="viewport" content="width=640,user-scalable=no,target-densitydpi=320">
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	html,body{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.work_place{
+		width:630px;
+		height: 630px;
+		overflow: hidden;
+		position: absolute;
+		top:80px;
+		border:5px dotted #ccc;
+	}
+	.work_place canvas,.work_place img{
+		width:100%;
+		height: 100%;
+		position: absolute;
+		top:0;
+		left:0;
+	}
+	#canvashide{
+		filter:alpha(opacity=0);
+		-moz-opacity:0;
+		-khtml-opacity: 0;
+		opacity: 0;
+	}
+	.work_place img{
+		display: none;
+	}
+	.pic_btn{
+		width: 200px;
+		height: 50px;
+		border-radius: 10px;
+		background-color: blue;
+		position: absolute;
+		top:10px;
+		left:10px;
+	}
+	.done_btn{
+		width: 200px;
+		height: 50px;
+		border-radius: 10px;
+		background-color: blue;
+		position: absolute;
+		top:10px;
+		right:10px;
+	}
+	.pic_btn p,.done_btn p{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height: 100%;
+		text-align: center;
+		color: #ffffff;
+		font-size: 17px;
+		line-height: 50px;
+	}
+	.pic_btn input{
+		position: absolute;
+		width:100%;
+		height: 100%;
+		top:0;
+		left:0;
+		opacity: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="pic_btn">
+		<p>选择照片</p>
+		<input type="file" id="my_file" onchange="get_pic()"  accept="image/*">
+	</div>
+	<div class="done_btn">
+		<p>生成</p>
+	</div>
+	<div class="work_place">
+		<canvas id="canvashide"></canvas>
+		<canvas id="canvas1"></canvas>
+		<img src="" alt="">
+	</div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/easeljs-0.8.0.min.js"></script>
+<script src="js/exif.min.js"></script>
+<script src="js/megapix-image.js"></script>
+<script src="js/touch.min.js"></script>
+<script src="js/index.js"></script>
+</html>

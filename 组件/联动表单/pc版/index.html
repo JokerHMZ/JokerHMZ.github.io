@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3级联动(pc版)</title>
+    <style>
+        html,body,#container{
+            position: relative;
+        }
+        #ganged_from_container{
+            top: 0;
+        }
+        /*联动表单的位置和大小可以修改*/
+        #ganged_from_byHyLink .st1,#ganged_from_byHyLink .st2,#ganged_from_byHyLink .st3{
+            width: 200px;
+            height: 50px;
+            left: 0;
+            top: 0;
+        }
+        #ganged_from_byHyLink .st2{
+            left: 300px;
+        }
+        #ganged_from_byHyLink .st3{
+            left: 600px;
+        }
+        /*联动表单介绍部分的内容，大小，位置和背景可以修改*/
+        .introduce{
+            width: 30%;
+            left: 0;
+            top: 0;
+            line-height: 50px;
+            text-align: center;
+            height: 100%;
+        }
+        /*联动表单下拉框部分的内容，大小，位置和背景可以修改*/
+        #ganged_from_byHyLink .from{
+            width: 70%;
+            height: 100%;
+            left: 30%;
+            top: 0;
+        }
+        /*联动表单显示区域的背景，行高，文字居中和字号可以修改*/
+        .content{
+            background: red;
+            line-height: 50px;
+            text-align: center;
+            font-size: 12px;
+        }
+        /*联动表单箭头位置可以修改，修改时为避免箭头压住文字，需要设置
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected的padding-right*/
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected{
+            padding-right: 30px;
+        }
+        .arrow{
+            top: 5px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: blue;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+        }
+        /*下拉菜单的背景可以修改*/
+        .pull_down{
+            background: yellow;
+        }
+        /*以下为需要选择的css*/
+        #ganged_from_container{/*absolute或者是relative，必须选一个*/
+            position: absolute;
+            /*position: relative;*/
+        }
+        /*以下为必须要设置的css*/
+        #ganged_from_byHyLink .pull_down_scroll_bar{/*此处为滚动条的bar*/
+            background: green;/*需要自定义背景*/
+            width: 10px;/*需要自定义宽度*/
+        }
+        #ganged_from_byHyLink .pull_down_scroll_icon{/*此处为滚动条的滑块*/
+            width:100%;/*需要自定义宽度*/
+            background: orange;/*需要自定义背景*/
+            left: 0;/*需要自定义滑块的位置*/
+        }
+        /*以下为不可更改的css*/
+        .content{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #ganged_from_byHyLink{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #ganged_from_byHyLink *{
+            box-sizing: border-box;
+            -moz-user-select:none;
+            -webkit-user-select:none;
+            user-select:none;
+        }
+        #ganged_from_byHyLink .st1,#ganged_from_byHyLink .st2,#ganged_from_byHyLink .st3,
+        #ganged_from_byHyLink .content,#ganged_from_byHyLink .arrow,
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected,
+        #ganged_from_byHyLink .introduce,
+        #ganged_from_byHyLink .pull_down,
+        #ganged_from_byHyLink .from{
+            position: absolute;
+        }
+        #ganged_from_byHyLink .pull_down{
+            width: 100%;
+            left: 0;
+            max-height: 500px;
+            overflow: hidden;
+        }
+        #ganged_from_byHyLink .down{
+            top: 100%;
+        }
+        #ganged_from_byHyLink .up{
+            bottom: 100%;
+        }
+        #ganged_from_byHyLink .pull_down div,
+        #ganged_from_byHyLink .content,#ganged_from_byHyLink .arrow{
+            white-space:nowrap;
+            -webkit-white-space:nowrap;
+            -moz-white-space:nowrap;
+            -ms-white-space:nowrap;
+            text-overflow:ellipsis;
+            -moz-text-overflow:ellipsis;
+            -webkit-text-overflow:ellipsis;
+            -ms-text-overflow:ellipsis;
+        }
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        #ganged_from_byHyLink .default{
+            overflow: hidden;
+        }
+        #ganged_from_byHyLink .hid{
+            display: none;
+        }
+        #ganged_from_byHyLink .pull_down_item{
+            width: 100%;
+            height: 30px;
+            text-align: left;
+            line-height: 30px;
+            padding:0 10px;
+        }
+        #ganged_from_byHyLink .pull_down_item:hover{
+            background: rgba(100,100,100,0.3);
+        }
+        #ganged_from_byHyLink .pull_down_scroll_bar{
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+        #ganged_from_byHyLink .pull_down_scroll_bar.show{
+            display: block;
+        }
+        #ganged_from_byHyLink .pull_down_scroll_icon{
+            position: absolute;
+            top: 0;
+            cursor:pointer;
+        }
+        #ganged_from_byHyLink .pull_down_list{
+            -moz-transform: translateY(0px);
+            -webkit-transform: translateY(0px);
+            -ms-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="ganged_from_container">
+        <div id="ganged_from_byHyLink">
+            <div class="st1">
+                <div class="introduce">省</div>
+                <div class="from">
+                    <div class="select_box">
+                        <div class="content">
+                            <div class="default">请选择</div>
+                            <div class="selected hid"></div>
+                        </div>
+                        <div class="arrow">箭头</div>
+                    </div>
+                    <div class="pull_down">
+                        <div class="pull_down_list"></div>
+                        <div class="pull_down_scroll_bar">
+                            <div class="pull_down_scroll_icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="st2">
+                <div class="introduce">市</div>
+                <div class="from">
+                    <div class="select_box">
+                        <div class="content">
+                            <div class="default">请选择</div>
+                            <div class="selected hid"></div>
+                        </div>
+                        <div class="arrow">箭头</div>
+                    </div>
+                    <div class="pull_down">
+                        <div class="pull_down_list"></div>
+                        <div class="pull_down_scroll_bar">
+                            <div class="pull_down_scroll_icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="st3">
+                <div class="introduce">经销商</div>
+                <div class="from">
+                    <div class="select_box">
+                        <div class="content">
+                            <div class="default">请选择</div>
+                            <div class="selected hid"></div>
+                        </div>
+                        <div class="arrow">箭头</div>
+                    </div>
+                    <div class="pull_down">
+                        <div class="pull_down_list"></div>
+                        <div class="pull_down_scroll_bar">
+                            <div class="pull_down_scroll_icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="dataBtn" style="position: absolute;top:0;left: 850px">显示数据</button>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/gangedFrom.js"></script>
+<script>
+    gangedFromByHyLink.init(arr,"down");
+    $('#dataBtn').on("click",function (){
+        var data=gangedFromByHyLink.getData();
+        console.log(data);
+    })
+</script>
+</body>
+</html>

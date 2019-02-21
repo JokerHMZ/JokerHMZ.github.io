@@ -1,0 +1,77 @@
+/*控制chrome的video中control里按钮的位置*/
+video::-webkit-media-controls {
+  overflow: hidden !important
+}
+video::-webkit-media-controls-enclosure {
+  width: calc(100% + 32px);
+  margin-left: auto;
+}
+/*改变input中placeholder的颜色*/
+input::-moz-placeholder {
+  color: #00549c;
+}
+input::-webkit-input-placeholder {
+  color:#00549c;
+}
+input:-ms-input-placeholder {
+  color:#00549c;
+}
+/*横屏提示*/
+@media all and (orientation: landscape) {}
+/*服务器字体*/
+@font-face{
+  font-family:myFont;
+  src: url('FZLTHJW_0.eot'),
+        url('FZLTHJW_0.svg'),
+        url('FZLTHJW_0.ttf'),
+        url('FZLTHJW_0.woff')
+}
+/*禁用手机浏览器的用户选择功能 */
+/*user-select值的选择：
+*none：文本不能被选择
+*auto：默认值，用户可以选中元素中的内容
+*text：用户可以选择元素中的文本
+*element：文本可选，但仅限元素的边界内(只有IE和FF支持)
+*all：在编辑器内，如果双击或上下文点击发生在子元素上，该值的最高级祖先元素将被选中。
+*/
+* {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+}
+/*系统默认菜单被禁用*/
+*{
+  -webkit-touch-callout: none;
+  touch-callout: none;
+}
+/*屏蔽点击的时候出现的高亮颜色*/
+div,input,img {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+/*去掉系统默认样式*/
+select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+/*背景被裁剪到内容框*/
+div {
+  background-clip:content-box;
+}
+
+/*多行文本溢出显示省略号*/
+div{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-line-clamp: 2;//限制在一个块元素显示的文本的行数
+}
+/*允许在单词内换行*/
+div{
+  word-break:break-all
+}
+
+
+
+

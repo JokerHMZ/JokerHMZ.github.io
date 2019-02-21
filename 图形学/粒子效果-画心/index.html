@@ -1,0 +1,110 @@
+<!DOCTYPE html>  
+<html>  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w/640;
+            document.getElementById('viewport').content = 'width=640,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+    </script>
+</head>  
+<body onload = "init();">  
+    <button id = "start" onclick = "start();">click me!</button>  
+    <br />
+    <script src=""></script>
+    <script type = "text/javascript">
+        var limit = 300;
+        var unit = 200;//心形线单位一
+        var width = 800,
+                height = 600;
+        var ctx = null;
+        var balls = [];
+        var side = [];
+        function inHeart(b){
+            //(x ^ 2 +ｙ^ 2 - 1) - x ^ 2 * y ^ 3 == 0，心形函数
+            var x = b.x / unit; //变量200
+            var y = -b.y / unit;//因为坐标y轴是向下的
+            var part = x * x + y * y - 1;  //利用了心形函数//x^2+y^2-1=x^2*y^3是心形，在这个区域内
+            return (part * part * part < x * x * y * y * y);
+        }
+
+        function randomColor(){  //随机取色
+            var x = Math.floor(Math.random() * 155) + 100;  //定义100到255的随机数
+            var y = Math.floor(Math.random() * 155) + 100;
+            var z = Math.floor(Math.random() * 155) + 100;
+            return "rgb(" + x + "," + y + "," + z + ")";  //返回随机颜色
+        }
+
+        function createBall(){  //创建彩球的材料
+            return {
+                x : (Math.random() - Math.random()) * width * 0.1,  //width是800
+                y : (Math.random() - Math.random()) * height * 0.2 - height * 0.1,//height是600
+                vx : (Math.random() - Math.random()) * 7,
+                vy : (Math.random() - Math.random()) * 7,
+                r : Math.random() * 5, //随机半径5之内
+                color : randomColor()
+            }
+        }
+
+        function init(){
+            var cvs = document.createElement("canvas");  //创建画布
+            cvs.width = width;  //画布宽
+            cvs.height = height;  //画布高
+            ctx = cvs.getContext("2d");  //contextID 指定了您想要在画布上绘制的类型。当前唯一的合法值是 "2d"，它指定了二维绘图，并且导致这个方法返回一个环境对象，该对象导出一个二维绘图 API。
+
+            ctx.translate(width / 2, height / 2);  //x轴，y轴 在中心点定义新的圆心
+
+            document.body.appendChild(cvs);  //向body中插入创建的画布
+
+            for(i = 0; i < limit; i++){
+                balls.push(createBall());  //创建的balls插入之前定义的数组，创建limit个ball
+            }
+            for(i = 0; i < limit / 5; i++){
+                side.push(undefined);  //side 数组中放未定义的 limit/5 个
+            }
+        }
+
+        function drawBall(ctx, ball){  //画球 参数是 画布和数组
+            ctx.fillStyle = ball.color;  //设置或返回用于填充绘画的颜色、渐变或模式
+            ctx.beginPath();  //起始一条路径，或重置当前路径。
+            ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2, false);//arc() 方法创建弧/曲线（用于创建圆或部分圆)  圆的中心x位置 y位置 半径 起始角 结束角 false顺时针 true逆时针
+            ctx.closePath();  //与 beginPath对应
+            ctx.fill();  //绘制
+        }
+
+        function start(){  //核心
+            document.body.removeChild(document.getElementById("start"));  //去掉click me
+            setInterval(
+                    function(){
+                        ctx.fillStyle = "rgba(0, 0, 0, 0.3)";  //设置画布背景为黑色
+                        ctx.fillRect(-width / 2, -height / 2, width, height);//画矩形黑框  ,左上角xy坐标，宽高
+
+                        for(var i=0;i<balls.length;i++){
+                            var b = balls[i]; //用b一个个取数组中的值
+                            drawBall(ctx, b);
+                            b.x += b.vx;
+                            b.y += b.vy;
+                            if(!inHeart(b)){
+                                side[Math.floor(Math.random() * side.length)] = balls[i];
+                                balls[i] = createBall();
+                            }
+                        }
+
+                        for(var i=0;i<side.length;i++){
+                            var b = side[i];
+                            if(b != undefined){
+                                drawBall(ctx, b);
+                            }
+                        }
+                    }
+                    , 33);
+        }
+    </script>
+</body>  
+</html>  

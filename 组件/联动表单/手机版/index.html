@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>3级联动(手机版)</title>
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w/640;
+            document.getElementById('viewport').content = 'width=640,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+        document.addEventListener('touchmove',function(event){
+            event.preventDefault();
+            return false;
+        });
+    </script>
+    <style>
+        html,body,#container{
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        /*联动表单的位置和大小可以修改*/
+        #ganged_from_byHyLink .st1,#ganged_from_byHyLink .st2,#ganged_from_byHyLink .st3{
+            width: 200px;
+            height: 50px;
+            left: 0;
+            top: 0;
+        }
+        #ganged_from_byHyLink .st2{
+            left: 200px;
+        }
+        #ganged_from_byHyLink .st3{
+            left: 400px;
+        }
+        /*联动表单介绍部分的内容，大小，位置和背景可以修改*/
+        .introduce{
+            width: 30%;
+            left: 0;
+            top: 0;
+            line-height: 50px;
+            text-align: center;
+            height: 100%;
+        }
+        /*联动表单下拉框部分的内容，大小，位置和背景可以修改*/
+        #ganged_from_byHyLink .from{
+            width: 70%;
+            height: 100%;
+            left: 30%;
+            top: 0;
+        }
+        /*联动表单显示区域的背景，行高，文字居中和字号可以修改*/
+        .content{
+            background: red;
+            line-height: 50px;
+            text-align: center;
+        }
+        /*联动表单箭头位置可以修改，修改时为避免箭头压住文字，需要设置
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected的padding-right*/
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink .selected{
+            padding-right: 30px;
+        }
+        .arrow{
+            top: 10px;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: blue;
+            line-height: 30px;
+            text-align: center;
+        }
+        /*以下为需要选择的css*/
+        #ganged_from_byHyLink{/*absolute或者是relative，必须选一个*/
+            /*position: absolute;*/
+            position: relative;
+        }
+        /*以下为不可更改的css*/
+        .content{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #ganged_from_byHyLink{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #ganged_from_byHyLink *{
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        #ganged_from_byHyLink .st1,#ganged_from_byHyLink .st2,#ganged_from_byHyLink .st3,
+        #ganged_from_byHyLink .content,#ganged_from_byHyLink .arrow,
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink select,#ganged_from_byHyLink .selected,
+        #ganged_from_byHyLink .introduce,
+        #ganged_from_byHyLink .from{
+            position: absolute;
+        }
+        #ganged_from_byHyLink .pull_down div,
+        #ganged_from_byHyLink .content,#ganged_from_byHyLink .arrow{
+            white-space:nowrap;
+            -webkit-white-space:nowrap;
+            -moz-white-space:nowrap;
+            -ms-white-space:nowrap;
+            text-overflow:ellipsis;
+            -moz-text-overflow:ellipsis;
+            -webkit-text-overflow:ellipsis;
+            -ms-text-overflow:ellipsis;
+        }
+        #ganged_from_byHyLink .default,#ganged_from_byHyLink select,#ganged_from_byHyLink .selected{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        #ganged_from_byHyLink .default{
+            overflow: hidden;
+        }
+        #ganged_from_byHyLink select,#ganged_from_byHyLink option{
+            outline: none;
+            border: none;
+        }
+        #ganged_from_byHyLink option{
+            opacity: 1;
+        }
+        #ganged_from_byHyLink select{
+            opacity: 0.01;
+            z-index: 10;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+        }
+        #ganged_from_byHyLink .hid{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="ganged_from_byHyLink">
+        <div class="st1">
+            <div class="introduce">省</div>
+            <div class="from">
+                <div class="content">
+                    <div class="default">请选择</div>
+                    <div class="selected hid"></div>
+                    <select name="ganged_from_st1">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="arrow">箭头</div>
+            </div>
+        </div>
+        <div class="st2">
+            <div class="introduce">市</div>
+            <div class="from">
+                <div class="content">
+                    <div class="default">请选择</div>
+                    <div class="selected hid"></div>
+                    <select name="ganged_from_st2">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="arrow">箭头</div>
+            </div>
+        </div>
+        <div class="st3">
+            <div class="introduce">经销商</div>
+            <div class="from">
+                <div class="content">
+                    <div class="default">请选择</div>
+                    <div class="selected hid"></div>
+                    <select name="ganged_from_st3">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="arrow">箭头</div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="dataBtn" style="position: absolute;top:100px;left: 0">显示数据</button>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/gangedFrom.js"></script>
+<script>
+    gangedFromByHyLink.init(arr);
+    $('#dataBtn').on("click",function (){
+        var data=gangedFromByHyLink.getData();
+        console.log(data);
+    })
+</script>
+</body>
+</html>

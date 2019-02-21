@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue3原理探秘</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="input" />
+        <div>您输入的值:<span id="title"></span></div>
+    </div>
+    <script>
+        const obj = {};
+        const $input = document.getElementById("input");
+        const $title = document.getElementById("title");
+        //definepropoty 数组 
+        const newObj = new Proxy({}, {
+            get: function (target, key, receiver) {
+                //js反射
+                return Reflect.get(target, key, receiver);
+            },
+            set: function (target, key, value, receiver) {
+                if (key == "text") {
+                    console.log("代理已经生效");
+                    // $input.value = value;
+                    $title.innerHTML = value;
+                }
+                return Reflect.set(target, key, value, receiver);
+            }
+        });
+        $input.addEventListener("keyup", (e) => {
+            newObj.text = e.target.value;
+        });
+        //AST webpack loader 
+        //三大框架 web框架 网页
+        //react redux 函数式编程 事物 state (fiber) hooks
+        //angular  FRP rx.js 异步状态管理 IOC 
+        //图形学 拼框架更新 技术认知  数学+物理 国家智城市
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<body>
+<script>
+    var a=[9,2,3,4,1,5];
+
+    function selectSort(arr) {
+        for(var i=0,minIndex=i;i<arr.length-1;i++){
+            minIndex=i;
+            for(var j=i+1;j<arr.length;j++){
+                if(arr[j]<arr[minIndex]){
+                    minIndex=j
+                }
+            }
+            arr[minIndex]=[arr[i],arr[i]=arr[minIndex]][0];
+        }
+        return arr
+    }
+    console.log(selectSort(a));
+</script>
+</body>
+</html>

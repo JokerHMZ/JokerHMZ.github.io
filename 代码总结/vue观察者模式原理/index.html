@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+  <head></head>
+  <body>
+  <div id="app">
+    <input type="text" id="a" v-model="text">
+    {{text}}
+    <input type="text" v-model="text2">
+    {{text2}}
+  </div>
+  <script src="src/Batcher.js"></script>
+  <script src="src/Dep.js"></script>
+  <script src="src/Observe.js"></script>
+  <script src="src/Watcher.js"></script>
+  <script src="src/Compile.js"></script>
+  <script src="src/MVVM.js"></script>
+  <script>
+    var vm = new Vue({
+      el: 'app',
+      data: {
+        text: 'hello world',
+        text2: '1234',
+      }
+    });
+  </script>
+  </body>
+</html>

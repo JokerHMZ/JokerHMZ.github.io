@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>集合</title>
+</head>
+<body>
+<script>
+    function Set() {
+        this.dataStore=[];
+    }
+    Set.prototype={
+        constructor:Set,
+        add:function (data) {
+            var i=this.dataStore.indexOf(data)
+            console.log(i);
+            if(i<0){
+                this.dataStore.push(data);
+                return data
+            }else{
+                return false
+            }
+        },
+        remove:function (data) {
+            var i=this.dataStore.indexOf(data);
+            if(i<0){
+                return false
+            }else{
+                return this.dataStore.splice(i,1).pop()
+            }
+        },
+        union:function (set) {
+            var temSet=new Set()
+        },
+        intersect:function (set) {
+
+        },
+        difference:function (set) {
+
+        },
+        show:function () {
+            return this.dataStore
+        }
+    }
+
+    var h=new Set();
+    h.add(1)
+    h.add(2)
+    h.add(3)
+    h.add(4)
+    h.add(5)
+    h.add(6)
+    h.add(7)
+    console.log(h.show())
+    console.log(h.remove(2))
+    console.log(h.show())
+
+</script>
+</body>
+</html>

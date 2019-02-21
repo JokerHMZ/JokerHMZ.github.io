@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>demo</title>
+    <script>
+        (function fnSetMeta() {
+            var w = screen.width,
+                    s = w/640;
+            document.getElementById('viewport').content = 'width=640,initial-scale='+s+',minimum-scale='+s+',maximum-scale='+s+',user-scalable=no';
+        })();
+    </script>
+    <style>
+        html,body,#container{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #cas{
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        #btn{
+            width: 200px;
+            height: 60px;
+            background: red;
+            position: absolute;
+            z-index: 1;
+            left: 220px;
+            top: 50px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <canvas id="cas"></canvas>
+    <div id="btn">音乐加载中...</div>
+</div>
+<script src="jquery-2.1.1.min.js"></script>
+<script>
+
+    window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+    window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame;
+    window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+    $("#cas")[0].width=parseInt($("#container").css("width"));
+    $("#cas")[0].height=parseInt($("#container").css("height"));
+
+    var cwidth = $("#cas")[0].width,
+        cheight = $("#cas")[0].height - 2,
+        meterWidth = 15, //能量条的宽度
+        gap = 2, //能量条间的间距
+        meterNum = ($("#cas")[0].width / (meterWidth + gap))>>0, //计算当前画布上能画多少条
+        ctx=$("#cas")[0].getContext("2d");
+
+    gradient = ctx.createLinearGradient(0, 0, 0, cheight);
+    gradient.addColorStop(1, '#0ff');
+    gradient.addColorStop(0.8, '#ff0');
+    gradient.addColorStop(0.6, '#f0f');
+    gradient.addColorStop(0.4, '#f00');
+    gradient.addColorStop(0.2, '#00f');
+    gradient.addColorStop(0, '#0f0');
+    ctx.fillStyle = gradient;
+
+    var audioContext=new AudioContext();
+    var canClick=false;
+
+    loadSound("bg.mp3"); //调用
+    // 定义加载音频文件的函数
+    function loadSound(url) {
+        var request = new XMLHttpRequest(); //建立一个请求
+        request.open('GET', url, true); //配置好请求类型，文件路径等
+        request.responseType = 'arraybuffer'; //配置数据返回类型
+        // 一旦获取完成，对音频进行进一步操作，比如解码
+        request.onload = function(data) {
+            var arraybuffer = request.response;
+            audioContext.decodeAudioData(arraybuffer, function(buffer) { //解码成功则调用此函数，参数buffer为解码后得到的结果
+                var audioBufferSouceNode = audioContext.createBufferSource(),
+                    analyser = audioContext.createAnalyser();
+                //将source与分析器连接
+                audioBufferSouceNode.connect(analyser);
+                //将分析器与destination连接，这样才能形成到达扬声器的通路
+                analyser.connect(audioContext.destination);
+                //将上一步解码得到的buffer数据赋值给source
+                audioBufferSouceNode.buffer = buffer;
+                $("#btn").text("音乐加载已完成");
+                canClick=true;
+                $("#btn").on("touchend",function (){
+                    //播放
+                    if(canClick){
+                        canClick=false;
+                        audioBufferSouceNode.start(0);
+                        drawMusic();
+                    }
+                });
+                function drawMusic(){
+                    //音乐响起后，把analyser传递到另一个方法开始绘制频谱图了，因为绘图需要的信息要从analyser里面获取
+                    var array = new Uint8Array(analyser.frequencyBinCount);
+                    analyser.getByteFrequencyData(array);
+                    var step=Math.round(array.length / meterNum);//计算从analyser中的采样步长
+                    ctx.clearRect(0, 0, cwidth, cheight); //清理画布准备画画
+                    for (var i = 0; i < meterNum; i++) {
+                        var value = (array[i * step])>>0;
+                        ctx.fillRect(i * (meterWidth+gap) /*频谱条的宽度+条间间距*/ , cheight - value*3, meterWidth, value*3);
+                    }
+                    requestAnimationFrame(drawMusic);
+                }
+
+            }, function(e) { //这个是解码失败会调用的函数
+                alert("!哎玛，文件解码失败:(");
+            });
+        };
+        request.send();
+    }
+</script>
+</body>
+</html>
