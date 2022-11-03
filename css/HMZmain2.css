@@ -1,0 +1,812 @@
+#HMZ_personal_center_btn{
+    width: 115px;
+    height: 54px;
+    padding:30px 29px;
+    right:0;
+    top: 0;
+    position: absolute;
+    background: url("../img/personalCenter.png") no-repeat center;
+}
+/*----------------�콱ҳ�� �ύ������ʼ-----------------*/
+#HMZ_personal_center,#HMZ_lottery,#HMZ_personal_center>div,#HMZ_lottery>div,.inWeiXin,.outWeiXin{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#HMZ_lottery .lottery_list_title{
+    position: absolute;
+    left: 0;
+    top:156px;
+    width: 100%;
+    height: 61px;
+    background: url("../img/HMZti1.png") no-repeat center;
+}
+#HMZ_lottery .lottery_list_banner{
+    position: absolute;
+    left: 0;
+    top:239px;
+    width: 100%;
+    height: 176px;
+    background: url("../img/HMZbunner1.png") no-repeat center;
+}
+#HMZ_lottery .list{
+    width: 396px;
+    height: 320px;
+    position: absolute;
+    left: 122px;
+    top:454px;
+}
+#HMZ_lottery .list>div{
+    width: 100%;
+    padding-bottom: 18px;
+    height: 92px;
+    position: relative;
+}
+#HMZ_lottery .list>div p,#HMZ_personal_center .commit_list p{
+    width: 100%;
+    height: 22px;
+}
+#HMZ_lottery .list>div input,#HMZ_lottery .list>div span{
+    margin-top: 8px;
+    height: 61px;
+    line-height: 61px;
+    box-sizing: border-box;
+    border:2px #be9761 solid;
+    border-radius: 8px;
+    text-align: center;
+    float: left;
+    font-size: 19px;
+}
+#HMZ_lottery .list>div span{
+    float: right;
+}
+#HMZ_lottery_tel p,#personal_center_tel p{
+    background: url("../img/HMZtel.png") no-repeat top left;
+}
+#HMZ_lottery_ma p,#personal_center_ma p{
+    background: url("../img/HMZma.png") no-repeat top left;
+}
+#HMZ_lottery_telMa p,#personal_center_telMa p{
+    background: url("../img/HMZtelma.png") no-repeat top left;
+}
+#HMZ_lottery_tel input,#personal_center_tel input{
+    color:#be9761;
+    width: 100%;
+    /*padding-left: 50px;*/
+    background: transparent;
+}
+#HMZ_lottery_ma input,#HMZ_lottery_telMa input,#personal_center_ma input,#personal_center_telMa input{
+    color:#dcb073;
+     width: 246px;
+    /*padding-left: 50px;*/
+    background: transparent;
+ }
+.HMZ_input_padding_left{
+    padding-left: 50px
+}
+#HMZ_lottery_ma span,#HMZ_lottery_telMa span,#personal_center_ma span,#personal_center_telMa span{
+    width: 145px;
+    color:#f7f7f7;
+}
+.HMZ_submit_bg{
+    background: rgba(73,67,74,0.8);
+}
+#HMZ i{
+    width: 50px;
+    height: 56px;
+    position: absolute;
+    left: 2px;
+    top:32px;
+    background: url("../img/HMZerror.png") no-repeat center;
+}
+#lottery_submit_btn{
+    width: 172px;
+    height: 61px;
+    box-sizing: border-box;
+    border:2px #be9761 solid;
+    background: url("../img/lottery_submit.png") no-repeat center;
+    position: absolute;
+    border-radius: 8px;
+    left: 234px;
+    top:858px;
+}
+/*----------------�콱ҳ�� �ύ��������-----------------*/
+/*----------------�콱ҳ�� ��ȡ��Ʒ��ʼ-----------------*/
+    /*------------------------�ɹ�---------------------*/
+#HMZ_lottery .success,#HMZ_lottery .error,#HMZ_lottery .inWinXin,#HMZ_lottery .outWeiXin{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#HMZ_lottery .get_prize .success .title{
+    position: absolute;
+    top:191px;
+    left: 0;
+    width: 100%;
+}
+#HMZ_lottery .get_prize .success .banner{
+    position: absolute;
+    top:283px;
+    left: 0;
+    width: 100%;
+    background: url("../img/HMZbunner1.png") no-repeat center;
+    height: 176px;
+}
+#HMZ_lottery .get_prize .success .use{
+    position: absolute;
+    top:477px;
+    left: 251px;
+    width: 137px;
+    height: 49px;
+}
+#HMZ_lottery .get_prize .success .li,#HMZ_lottery .get_prize .error .li{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url("../img/HMZli1.png") no-repeat center;
+}
+#iWSBtn,#oWSBtn,#iWRBtn,#oWRBtn{
+    height: 67px;
+    position: absolute;
+
+}
+#iWSBtn,#iWRBtn{
+    width: 171px;
+    left: 234px;
+    top:828px;
+    background: url("../img/inWsuccessBtn.png") no-repeat center;
+}
+#oWSBtn,#oWRBtn{
+    left: 174px;
+    width: 291px;
+    top:800px;
+    background: url("../img/outWsuccessBtn.png") no-repeat center;
+}
+#HMZ_lottery .get_prize .inWeiXin .success .title{
+    height: 55px;
+    background: url("../img/outWsuccessTitle.png") no-repeat center;
+}
+#HMZ_lottery .get_prize .outWeiXin .success .title{
+    height: 46px;
+    background: url("../img/outWsuccessTitle.png") no-repeat center;
+}
+#HMZ_lottery .get_prize .outWeiXin .success .use{
+    background: url("../img/inWsuccessUse.png") no-repeat center;
+}
+#HMZ_lottery .get_prize .inWeiXin .success .use{
+    background: url("../img/outWsuccessUse.png") no-repeat top center;
+}
+#HMZ_lottery .get_prize .inWeiXin .success .li,#HMZ_lottery .get_prize .inWeiXin .error .li{
+    top:590px;
+}
+#HMZ_lottery .get_prize .outWeiXin .success .li,#HMZ_lottery .get_prize .outWeiXin .error .li{
+    top:537px;
+}
+    /*------------------------ʧ��---------------------*/
+#HMZ_lottery .get_prize .error .banner{
+    position: absolute;
+    top:284px;
+    left: 0;
+    width: 100%;
+    height: 176px;
+    background: url("../img/HMZbunner2.png") no-repeat center;
+}
+#HMZ_lottery .get_prize .error .banner.wei_ling_qu{
+    background:url("../img/HMZbunner4.png") no-repeat center;
+}
+/*----------------�콱ҳ�� ��ȡ��Ʒ����-----------------*/
+/*----------------�콱ҳ�� ��ȡDM����ʼ-----------------*/
+    #HMZ_lottery #DM{
+        position: absolute;
+        width: 100%;
+        height: 679px;
+        left: 0;
+        top:169px;
+    }
+    #DM img{
+        display: block;
+        margin: 0 auto;
+        width: 507px;
+        height: 679px;
+    }
+    #DMBtn,#HMZ_personal_center #personal_center_btn{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 55px;
+        background:url("../img/DMBtn.png") no-repeat center;
+    }
+/*----------------�콱ҳ�� ��ȡDM������-----------------*/
+/*-------------------�������Ŀ�ʼ-----------------------*/
+#HMZ_personal_center{
+    width: 507px;
+    height: 679px;
+    position: absolute;
+    top:169px;
+    left:66px;
+    background: url("../img/personCenterBg.png") no-repeat center;
+}
+#HMZ_personal_center .personal_center_nav{
+    width: 100%;
+    height: 62px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#HMZ_personal_center .personal_center_main{
+    width: 100%;
+    height: 614px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#HMZ_personal_center .personal_center_main>div{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+}
+#HMZ_personal_center .personal_center_nav li{
+    position: absolute;
+    top:0;
+    height: 62px;
+    width: 171px;
+}
+#HMZ_personal_center .personal_center_nav li span{
+    position: absolute;
+    display: inline-block;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 100%;
+    width: 92px;
+}
+#HMZ_personal_center .personal_center_nav li:nth-child(1){left: 0;width: 171px;}
+#HMZ_personal_center .personal_center_nav li:nth-child(2){left: 174px;width: 166px;}
+#HMZ_personal_center .personal_center_nav li:nth-child(3){right: 0;width: 164px;}
+#HMZ_personal_center .personal_center_nav li:nth-child(1) span{
+    background-image: url("../img/prizeRecord.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+#HMZ_personal_center .personal_center_nav li:nth-child(2) span{
+    background-image: url("../img/prizeExplain.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+#HMZ_personal_center .personal_center_nav li:nth-child(3) span{
+    background-image: url("../img/statement.png");
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+#HMZ_personal_center .personal_center_nav li span.active{
+    background-position: center left;
+}
+#HMZ_personal_center .commit_list>div{
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+#personal_center_tel{
+    top:50px;
+}
+#personal_center_ma{
+    top:158px;
+}
+#personal_center_telMa{
+    top:270px;
+}
+#HMZ_personal_center .commit_list input,#HMZ_personal_center .commit_list span{
+    margin-top: 8px;
+    height: 61px;
+    line-height: 61px;
+    box-sizing: border-box;
+    border:2px #be9761 solid;
+    border-radius: 8px;
+    text-align: center;
+    float: left;
+    font-size: 19px;
+}
+#HMZ_personal_center .commit_list span{
+     float: right;
+ }
+#HMZ_personal_center .commit_list{
+    width: 396px;
+    height: 320px;
+    position: absolute;
+    left: 55px;
+    top:0;
+}
+#commit_list_btn{
+    width: 172px;
+    height: 61px;
+    box-sizing: border-box;
+    border:2px #be9761 solid;
+    background: url("../img/lottery_submitChaKan.png") no-repeat center;
+    position: absolute;
+    border-radius: 8px;
+    left: 112px;
+    top:450px;
+}
+#HMZ_personal_center .record_list{
+    width: 431px;
+    height: 460px;
+    position: absolute;
+    top:60px;
+    left: 38px;
+}
+#HMZ_personal_center .record_list>div{
+    width: 100%;
+}
+#nutrition{
+    max-height: 180px;
+    margin-bottom: 40px;
+}
+#nutrition::after,#bigPrize::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#bigPrize{
+    max-height:100px;
+}
+#nutrition .title,#bigPrize .title{
+    width: 290px;
+    float: left;
+}
+#nutrition .time,#bigPrize .time{
+    width: 110px;
+    float: right;
+}
+#nutrition li,#bigPrize li{
+    height: 36px;
+    line-height: 36px;
+    padding-bottom: 6px;
+    color:#c59e63;
+}
+#nutrition li.head,#bigPrize li.head{
+    width: 100%;
+    height:23px;
+    padding-bottom:15px;
+}
+#nutrition .title .head{
+    background: url("../img/nutritionHead.png") no-repeat left top;
+}
+#bigPrize .title .head{
+    background: url("../img/bigPrize.png") no-repeat left top;
+}
+#nutrition .time .head,#bigPrize .time .head{
+    background: url("../img/nutritionTime.png") no-repeat left top;
+}
+#nutrition .title span,#bigPrize .title span{
+    display: inline-block;
+    height: 100%;
+    width: 170px;
+}
+#nutrition .title .btn,#bigPrize .title .bigBtn{
+    width: 72px;
+    border:#c59e63 solid 1px;
+    border-radius: 4px;
+    text-align: center;
+}
+.no_record{
+    width: 100%;
+    height: 550px;
+    background: url("../img/noRecond.png") no-repeat center;
+}
+/*#HMZ_personal_center .prize_explain .banner{*/
+    /*width: 396px;*/
+    /*height: 176px;*/
+    /*margin: 72px auto 50px;*/
+    /*background: url("../img/HMZbunner1.png") no-repeat center;*/
+/*}*/
+#HMZ_personal_center .prize_explain .scrollBar,#HMZ_personal_center .statement .scrollBar{
+    width: 40px;
+    height: 502px;
+    margin-top: 20px;
+    float: left;
+    position: relative;
+    background: url("../img/scrollBarLine.png") no-repeat center;
+}
+.scrollBarRect{
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: 15px;
+    top: 0;
+    background: url("../img/scrollBarRect.png") no-repeat center;
+}
+#HMZ_personal_center .prize_explain .textHMZ,#HMZ_personal_center .statement .textHMZ{
+    width: 446px;
+    margin-top: 20px;
+    height: 502px;
+    margin-right: 11px;
+    float: right;
+    overflow:hidden;
+}
+#HMZ_personal_center .prize_explain .textHMZ div{
+    width: 100%;
+    height: 2380px;
+}
+#HMZ_personal_center .prize_explain .textHMZ div p{
+    width: 100%;
+    height: 100%;
+    background: url("../img/prizeExplainText2.png") no-repeat center;
+}
+#HMZ_personal_center .statement .textHMZ div{
+    width: 100%;
+    height: 3000px;
+}
+#HMZ_personal_center .statement .textHMZ div p{
+    width: 100%;
+    height: 100%;
+    background:url("../img/statementWord1.png") no-repeat center;
+}
+/*#HMZ_personal_center .statement div{*/
+    /*width: 100%;*/
+    /*height: 550px;*/
+    /*background: url("../img/statementWord.png") no-repeat center;*/
+/*}*/
+#HMZ_lottery_ma span img,#personal_center_ma span img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+/*-------------------�������Ľ���-----------------------*/
+#HMZ_lottery .get_prize .outWeiXin .success .use a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 10;
+}
+#HMZ.HMZ{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top:0;
+    opacity: 0;
+}
+#HMZ.moveIn{
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+    -webkit-transition: opacity 0.5s ease-in;
+}
+#nutrition span[data-i="2"],#bigPrize span[data-i="2"]{
+    background: #555;
+}
+#HMZHMZline{
+    width: 100%;
+    height: 2px;
+    background:#b29265;
+    margin-bottom: 30px;
+}
+#bigPrize li {
+    height: 70px;
+}
+#bigPrize .time .contentTime{
+    height: 70px;
+    line-height: 70px;
+}
+#bigPrize .title .bigBtn{
+    height: 36px;
+    position: relative;
+    top:-18px;
+}
+.HMZ_light p,.HMZ_light {
+    position: absolute;
+}
+/*�߹�*/
+#HMZ .HMZ_light .HMZ_nth1{
+    width: 100px;
+    height: 2px;
+    top:0;
+    left: -100px;
+    background: url("../img/HMZlight1.png") no-repeat center;
+}
+#HMZ .HMZ_light .HMZ_nth2{
+    width: 2px;
+    height: 55px;
+    top:-55px;
+    right:0;
+    background: url("../img/HMZlight2.png") no-repeat center;
+}
+#HMZ .HMZ_light .HMZ_nth3{
+    width: 100px;
+    height: 2px;
+    bottom:0;
+    right: -100px;
+    background: url("../img/HMZlight1.png") no-repeat center;
+}
+#HMZ .HMZ_light .HMZ_nth4{
+    width: 2px;
+    height: 55px;
+    bottom:-55px;
+    left: 0;
+    background: url("../img/HMZlight2.png") no-repeat center;
+}
+.HMZ_light{
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    left: -2px;
+    top:-2px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#iWSBtn .HMZ_light,#iWRBtn .HMZ_light{
+    width: 100%;
+    height: calc(100% - 4px);
+    left: 0;
+    top:2px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#HMZ_lottery .get_prize .success .use .HMZ_light,#oWSBtn .HMZ_light,#oWRBtn .HMZ_light{
+    width: 100%;
+    height:100%;
+    left: 0;
+    top:0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+@-webkit-keyframes light_move_top1{
+    0%{
+        left: -100px;
+    }
+    21%{
+        left: 100%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+@-webkit-keyframes light_move_right1{
+    0%{
+        top: -55px;
+    }
+    15%{
+        top: -55px;
+    }
+    30%{
+       top: 100%;
+    }
+    100%{
+        top: 100%;
+    }
+}
+@-webkit-keyframes light_move_bottom1{
+    0%{
+        right: -100px;
+    }
+    24%{
+        right: -100px;
+    }
+    45%{
+        right: 100%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+@-webkit-keyframes light_move_left1{
+    0%{
+        bottom: -55px;
+    }
+    39%{
+        bottom: -55px;
+    }
+    54%{
+       bottom: 100%;
+    }
+    100%{
+        bottom: 100%;
+    }
+}
+@keyframes light_move_top1{
+    0%{
+        left: -100px;
+    }
+    21%{
+        left: 100%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+@keyframes light_move_right1{
+    0%{
+        top: -55px;
+    }
+    15%{
+        top: -55px;
+    }
+    30%{
+       top: 100%;
+    }
+    100%{
+        top: 100%;
+    }
+}
+@keyframes light_move_bottom1{
+    0%{
+        right: -100px;
+    }
+    24%{
+        right: -100px;
+    }
+    45%{
+        right: 100%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+@keyframes light_move_left1{
+    0%{
+        bottom: -55px;
+    }
+    39%{
+        bottom: -55px;
+    }
+    54%{
+       bottom: 100%;
+    }
+    100%{
+        bottom: 100%;
+    }
+}
+.light_move_top1{
+    -webkit-animation:light_move_top1 3s linear infinite;
+    animation: light_move_top1 3s linear infinite;
+}
+.light_move_right1{
+    -webkit-animation:light_move_right1 3s linear infinite;
+    animation: light_move_right1 3s linear infinite;
+}
+.light_move_bottom1{
+    -webkit-animation:light_move_bottom1 3s linear infinite;
+    animation: light_move_bottom1 3s linear infinite;
+}
+.light_move_left1{
+    -webkit-animation:light_move_left1 3s linear infinite;
+    animation: light_move_left1 3s linear infinite;
+}
+/*�߹�2*/
+@-webkit-keyframes light_move_top2{
+    0%{
+        left: -100px;
+    }
+    27%{
+        left: 100%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+@-webkit-keyframes light_move_right2{
+    0%{
+        top: -55px;
+    }
+    21%{
+        top: -55px;
+    }
+    36%{
+        top: 100%;
+    }
+    100%{
+        top: 100%;
+    }
+}
+@-webkit-keyframes light_move_bottom2{
+    0%{
+        right: -100px;
+    }
+    30%{
+        right: -100px;
+    }
+    57%{
+        right: 100%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+@-webkit-keyframes light_move_left2{
+    0%{
+        bottom: -55px;
+    }
+    51%{
+        bottom: -55px;
+    }
+    66%{
+        bottom: 100%;
+    }
+    100%{
+        bottom: 100%;
+    }
+}
+@keyframes light_move_top2{
+    0%{
+        left: -100px;
+    }
+    27%{
+        left: 100%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+@keyframes light_move_right2{
+    0%{
+        top: -55px;
+    }
+    21%{
+        top: -55px;
+    }
+    36%{
+        top: 100%;
+    }
+    100%{
+        top: 100%;
+    }
+}
+@keyframes light_move_bottom2{
+    0%{
+        right: -100px;
+    }
+    30%{
+        right: -100px;
+    }
+    57%{
+        right: 100%;
+    }
+    100%{
+        right: 100%;
+    }
+}
+@keyframes light_move_left2{
+    0%{
+        bottom: -55px;
+    }
+    51%{
+        bottom: -55px;
+    }
+    66%{
+        bottom: 100%;
+    }
+    100%{
+        bottom: 100%;
+    }
+}
+.light_move_top2{
+    -webkit-animation:light_move_top2 3s linear infinite;
+    animation: light_move_top2 3s linear infinite;
+}
+.light_move_right2{
+    -webkit-animation:light_move_right2 3s linear infinite;
+    animation: light_move_right2 3s linear infinite;
+}
+.light_move_bottom2{
+    -webkit-animation:light_move_bottom2 3s linear infinite;
+    animation: light_move_bottom2 3s linear infinite;
+}
+.light_move_left2{
+    -webkit-animation:light_move_left2 3s linear infinite;
+    animation: light_move_left2 3s linear infinite;
+}
+
+
+#HMZ_lottery > div.get_prize > div.inWeiXin > div.success > div.use{
+    width: 100%;
+    left: 0;
+}
+
+
